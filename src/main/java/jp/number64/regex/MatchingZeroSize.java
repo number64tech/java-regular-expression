@@ -12,15 +12,17 @@ public interface MatchingZeroSize {
     public static final String PATTERN_PREFIX_MATCHING = "^NUMBER64";
     /** suffix matching (ends-with) */
     public static final String PATTERN_SUFFIX_MATCHING = "NUMBER64$";
-
-
-
+    /** prefix matching (starts-with) */
+    public static final String PATTERN_PREFIX_MATCHING_ESC = "\\ANUMBER64";
+    /** suffix matching (ends-with) */
+    public static final String PATTERN_SUFFIX_MATCHING_ESC = "NUMBER64\\Z";
 
     // methods
 
-    public boolean checkPartialMatching(final String text);
-    public boolean checkPerfectMatching(final String text);
-    public boolean checkPrefixMatching(final String text);
-    public boolean checkSuffixMatching(final String text);
-
+    public boolean findPartialMatching(final String text);
+    public boolean findPerfectMatching(final String text);
+    public boolean findPrefixMatching(final String text);
+    public boolean findSuffixMatching(final String text);
+    public boolean findPrefixMatchingEsc(final String text);
+    public boolean findSuffixMatchingEsc(final String text);
 }

@@ -16,47 +16,61 @@ public class MatchingCheckImpl
     /** @see java.util.regex.Matcher */
 
     // position
-    private static final Pattern EXP_PARTIAL_MATCHING = Pattern.compile(PATTERN_PARTIAL_MATCHING);
     private static final Pattern EXP_PERFECT_MATCHING = Pattern.compile(PATTERN_PERFECT_MATCHING);
+    private static final Pattern EXP_PARTIAL_MATCHING = Pattern.compile(PATTERN_PARTIAL_MATCHING);
     private static final Pattern EXP_PREFIX_MATCHING = Pattern.compile(PATTERN_PREFIX_MATCHING);
     private static final Pattern EXP_SUFFIX_MATCHING = Pattern.compile(PATTERN_SUFFIX_MATCHING);
+    private static final Pattern EXP_PREFIX_MATCHING_ESC = Pattern.compile(PATTERN_PREFIX_MATCHING_ESC);
+    private static final Pattern EXP_SUFFIX_MATCHING_ESC = Pattern.compile(PATTERN_SUFFIX_MATCHING_ESC);
     // char-class
     private static final Pattern EXP_SPECIFIC_CHARS = Pattern.compile(PATTERN_SPECIFIC_CHARS);
     private static final Pattern EXP_RANGE_CHARS = Pattern.compile(PATTERN_RANGE_CHARS);
 
     @Override
-    public boolean checkPartialMatching(String text) {
+    public boolean findPerfectMatching(String text) {
         LOGGER.debug(LOG_TEMPLATE, text);
-        return EXP_PARTIAL_MATCHING.matcher(text).matches();
+        return EXP_PERFECT_MATCHING.matcher(text).find();
     }
 
     @Override
-    public boolean checkPerfectMatching(String text) {
+    public boolean findPartialMatching(String text) {
         LOGGER.debug(LOG_TEMPLATE, text);
-        return EXP_PERFECT_MATCHING.matcher(text).matches();
+        return EXP_PARTIAL_MATCHING.matcher(text).find();
     }
 
     @Override
-    public boolean checkPrefixMatching(String text) {
+    public boolean findPrefixMatching(String text) {
         LOGGER.debug(LOG_TEMPLATE, text);
-        return EXP_PREFIX_MATCHING.matcher(text).matches();
+        return EXP_PREFIX_MATCHING.matcher(text).find();
     }
 
     @Override
-    public boolean checkSuffixMatching(String text) {
+    public boolean findSuffixMatching(String text) {
         LOGGER.debug(LOG_TEMPLATE, text);
-        return EXP_SUFFIX_MATCHING.matcher(text).matches();
+        return EXP_SUFFIX_MATCHING.matcher(text).find();
     }
 
     @Override
-    public boolean checkSpecificChars(String text) {
+    public boolean findPrefixMatchingEsc(String text) {
         LOGGER.debug(LOG_TEMPLATE, text);
-        return EXP_SPECIFIC_CHARS.matcher(text).matches();
+        return EXP_PREFIX_MATCHING_ESC.matcher(text).find();
     }
 
     @Override
-    public boolean checkRangeChars(String text) {
+    public boolean findSuffixMatchingEsc(String text) {
         LOGGER.debug(LOG_TEMPLATE, text);
-        return EXP_RANGE_CHARS.matcher(text).matches();
+        return EXP_SUFFIX_MATCHING_ESC.matcher(text).find();
+    }
+
+    @Override
+    public boolean findSpecificChars(String text) {
+        LOGGER.debug(LOG_TEMPLATE, text);
+        return EXP_SPECIFIC_CHARS.matcher(text).find();
+    }
+
+    @Override
+    public boolean findRangeChars(String text) {
+        LOGGER.debug(LOG_TEMPLATE, text);
+        return EXP_RANGE_CHARS.matcher(text).find();
     }
 }
