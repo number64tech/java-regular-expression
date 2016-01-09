@@ -11,6 +11,6 @@ public interface MatchingCharactorClass {
 
     // methods
 
-    public boolean checkSpecificChars(final String text);
-    public boolean checkRangeChars(final String text);
+    public boolean findSpecificChars(final String text);
+    public boolean findRangeChars(final String text);
 }
