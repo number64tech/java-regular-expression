@@ -26,8 +26,8 @@ public class CharactorClassTest {
 
     /**  */
     public static final class SimpleCharsTest extends TestBase {
-        @Override
-        public void doBeforeClass() {
+        @BeforeClass
+        public static void doBeforeClass() {
             LOGGER.debug("EXP_SIMPLE_CHARS: pattern=\"{}\"", EXP_SIMPLE_CHARS);
         }
         @Test
@@ -45,27 +45,27 @@ public class CharactorClassTest {
 
     /**  */
     public static final class NegationCharsTest extends TestBase {
-        @Override
-        public void doBeforeClass() {
+        @BeforeClass
+        public static void doBeforeClass() {
             LOGGER.debug("EXP_NEGATION_CHARS: pattern=\"{}\"", EXP_NEGATION_CHARS);
         }
         @Test
         public void caseTrue() {
-            assertTrue(target.findSimpleChars("BOMBER64"));
+            assertTrue(target.findNegationChars("BOMBER64"));
         }
         @Test
         public void caseFalse() {
-            assertFalse(target.findSimpleChars("nUMBER64"));
-            assertFalse(target.findSimpleChars("NuMBER64"));
-            assertFalse(target.findSimpleChars("nuMBER64"));
-            assertFalse(target.findSimpleChars("NUMBER64"));
+            assertFalse(target.findNegationChars("nUMBER64"));
+            assertFalse(target.findNegationChars("NuMBER64"));
+            assertFalse(target.findNegationChars("nuMBER64"));
+            assertFalse(target.findNegationChars("NUMBER64"));
         }
     }
 
     /**  */
     public static final class RangeCharsTest extends TestBase {
-        @Override
-        public void doBeforeClass() {
+        @BeforeClass
+        public static void doBeforeClass() {
             LOGGER.debug("EXP_RANGE_CHARS: pattern=\"{}\"", EXP_RANGE_CHARS);
         }
         @Test
@@ -86,8 +86,6 @@ public class CharactorClassTest {
     /** */
     public static abstract class TestBase {
         protected CharactorClass target;
-        @BeforeClass
-        public abstract void doBeforeClass();
         @Before
         public void doBefore() {
             target = new CharactorClass();

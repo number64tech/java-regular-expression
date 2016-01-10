@@ -37,8 +37,8 @@ public class BoundaryMatchersTest {
 
     /**  */
     public static final class BoundaryBeginningLineTest extends TestBase {
-        @Override
-        public void doBeforeClass() {
+        @BeforeClass
+        public static void doBeforeClass() {
             LOGGER.debug("EXP_BOUNDARY_BEGINNING_LINE: pattern=\"{}\"", EXP_BOUNDARY_BEGINNING_LINE);
         }
         @Test
@@ -55,8 +55,8 @@ public class BoundaryMatchersTest {
 
     /**  */
     public static final class BoundaryEndLineTest extends TestBase {
-        @Override
-        public void doBeforeClass() {
+        @BeforeClass
+        public static void doBeforeClass() {
             LOGGER.debug("EXP_BOUNDARY_END_LINE: pattern=\"{}\"", EXP_BOUNDARY_END_LINE);
         }
         @Test
@@ -73,8 +73,8 @@ public class BoundaryMatchersTest {
 
     /**  */
     public static final class MatchingPartialTest extends TestBase {
-        @Override
-        public void doBeforeClass() {
+        @BeforeClass
+        public static void doBeforeClass() {
             LOGGER.debug("EXP_MATCHING_PARTIAL: pattern=\"{}\"", EXP_MATCHING_PARTIAL);
         }
         @Test
@@ -91,8 +91,8 @@ public class BoundaryMatchersTest {
 
     /**  */
     public static final class MatchingPerfectTest extends TestBase {
-        @Override
-        public void doBeforeClass() {
+        @BeforeClass
+        public static void doBeforeClass() {
             LOGGER.debug("EXP_MATCHING_PERFECT: pattern=\"{}\"", EXP_MATCHING_PERFECT);
         }
         @Test
@@ -109,8 +109,8 @@ public class BoundaryMatchersTest {
 
     /**  */
     public static final class BoudaryBeginningInputTest extends TestBase {
-        @Override
-        public void doBeforeClass() {
+        @BeforeClass
+        public static void doBeforeClass() {
             LOGGER.debug("EXP_BOUNDARY_BEGINNING_INPUT: pattern=\"{}\"", EXP_BOUNDARY_BEGINNING_INPUT);
         }
         @Test
@@ -127,8 +127,8 @@ public class BoundaryMatchersTest {
 
     /**  */
     public static final class BoudaryTerminatorInputTest extends TestBase {
-        @Override
-        public void doBeforeClass() {
+        @BeforeClass
+        public static void doBeforeClass() {
             LOGGER.debug("EXP_BOUNDARY_TERMINATOR: pattern=\"{}\"", EXP_BOUNDARY_TERMINATOR);
         }
         @Test
@@ -145,8 +145,8 @@ public class BoundaryMatchersTest {
 
     /**  */
     public static final class BoudaryEndInputTest extends TestBase {
-        @Override
-        public void doBeforeClass() {
+        @BeforeClass
+        public static void doBeforeClass() {
             LOGGER.debug("EXP_BOUNDARY_END_INPUT: pattern=\"{}\"", EXP_BOUNDARY_END_INPUT);
         }
         @Test
@@ -163,7 +163,7 @@ public class BoundaryMatchersTest {
 
     /**  */
     public static final class EndOfPreviousMatchTest extends TestBase {
-        @Override
+        @BeforeClass
         public void doBeforeClass() {
             LOGGER.debug("EXP_END_OF_PREV_MATCH_ESC: pattern=\"{}\"", EXP_END_OF_PREV_MATCH_ESC);
         }
@@ -179,7 +179,7 @@ public class BoundaryMatchersTest {
 
     /**  */
     public static final class BoundaryWordTest extends TestBase {
-        @Override
+        @BeforeClass
         public void doBeforeClass() {
             LOGGER.debug("EXP_BOUNDARY_WORD: pattern=\"{}\"", EXP_BOUNDARY_WORD);
         }
@@ -195,7 +195,7 @@ public class BoundaryMatchersTest {
 
     /**  */
     public static final class BoundaryNonWordTest extends TestBase {
-        @Override
+        @BeforeClass
         public void doBeforeClass() {
             LOGGER.debug("EXP_BOUNDARY_NON_WORD: pattern=\"{}\"", EXP_BOUNDARY_NON_WORD);
         }
@@ -214,8 +214,6 @@ public class BoundaryMatchersTest {
     /** */
     public static abstract class TestBase {
         protected BoundaryMatchers target;
-        @BeforeClass
-        public abstract void doBeforeClass();
         @Before
         public void doBefore() {
             target = new BoundaryMatchers();
