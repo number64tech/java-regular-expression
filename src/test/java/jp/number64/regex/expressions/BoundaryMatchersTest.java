@@ -214,16 +214,19 @@ public class BoundaryMatchersTest {
     /**  */
     public static final class BoundaryNonWordTest extends TestBase {
         @BeforeClass
-        public void doBeforeClass() {
+        public static void doBeforeClass() {
             LOGGER.debug("EXP_BOUNDARY_NON_WORD: pattern=\"{}\"", EXP_BOUNDARY_NON_WORD);
         }
         @Test
-        public void caseTest() {
-
+        public void caseTrue() {
+            assertTrue(target.findBoundaryNonWord("\u8f5f" + "NUMBER64" + "\u8f5f"));
+            assertTrue(target.findBoundaryNonWord("NNUMBER644"));
         }
         @Test
         public void caseFalse() {
-
+            assertFalse(target.findBoundaryNonWord("NUMBER64"));
+            assertFalse(target.findBoundaryNonWord("##NUMBER64##"));
+            assertFalse(target.findBoundaryNonWord("He is NUMBER64"));
         }
     }
 
