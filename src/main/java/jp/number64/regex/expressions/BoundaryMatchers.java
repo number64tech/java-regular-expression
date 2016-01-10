@@ -34,7 +34,7 @@ public class BoundaryMatchers {
     public static final String EXP_BOUNDARY_BEGINNING_INPUT = "\\ANUMBER64";
     /** \Z The end of the input but for the final terminator, if any */
     public static final String EXP_BOUNDARY_TERMINATOR = "NUMBER64\\Z";
-    /** \z The end of the input */
+    /** \z The end of the input (new-line charactors are not excepted) */
     public static final String EXP_BOUNDARY_END_INPUT = "NUMBER64\\z";
 
     /** the end of the previous match (This expression is not important at Java... ?) */
@@ -42,6 +42,8 @@ public class BoundaryMatchers {
 
     /** \b A word boundary */
     public static final String EXP_BOUNDARY_WORD = "\\bNUMBER64\\b";
+    /** \b A word boundary (multibyte sample) */
+    public static final String EXP_BOUNDARY_MULTI_BYTE_WORD = "\\b" + "\u8f5f\u5927\u8f14" + "\\b";
     /** \B A non-word boundary */
     public static final String EXP_BOUNDARY_NON_WORD = "\\BNUMBER64\\B";
 
@@ -58,6 +60,7 @@ public class BoundaryMatchers {
     private static final Pattern PATTERN_END_OF_PREV_MATCH_ESC = Pattern.compile(EXP_END_OF_PREV_MATCH_ESC);
 
     private static final Pattern PATTERN_BOUNDARY_WORD = Pattern.compile(EXP_BOUNDARY_WORD);
+    private static final Pattern PATTERN_BOUNDARY_MULTI_BYTE_WORD = Pattern.compile(EXP_BOUNDARY_MULTI_BYTE_WORD);
     private static final Pattern PATTERN_BOUNDARY_NON_WORD = Pattern.compile(EXP_BOUNDARY_NON_WORD);
 
     public boolean findBoundaryBeginningLine(String text) {
@@ -103,6 +106,11 @@ public class BoundaryMatchers {
     public boolean findBoundaryWord(String text) {
         LOGGER.debug("text:{}", text);
         return PATTERN_BOUNDARY_WORD.matcher(text).find();
+    }
+
+    public boolean findBoundaryMultiByteWord(String text) {
+        LOGGER.debug("text:{}", text);
+        return PATTERN_BOUNDARY_MULTI_BYTE_WORD.matcher(text).find();
     }
 
     public boolean findBoundaryNonWord(String text) {

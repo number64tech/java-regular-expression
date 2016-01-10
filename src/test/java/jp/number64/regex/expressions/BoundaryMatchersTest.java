@@ -133,13 +133,12 @@ public class BoundaryMatchersTest {
         }
         @Test
         public void caseTrue() {
-            assertTrue(target.findBoundaryTerminator("NUMBER64"));
-            assertTrue(target.findBoundaryTerminator("NNNUMBER64"));
+            assertTrue(target.findBoundaryTerminator("NNUMBER64"));
+            assertTrue(target.findBoundaryTerminator("NNUMBER64\n"));
         }
         @Test
         public void caseFalse() {
             assertFalse(target.findBoundaryTerminator("NUMBER6464"));
-            assertFalse(target.findBoundaryTerminator("number64"));
         }
     }
 
@@ -151,13 +150,12 @@ public class BoundaryMatchersTest {
         }
         @Test
         public void caseTest() {
-            assertTrue(target.findBoundaryEndInput("NUMBER64"));
-            assertTrue(target.findBoundaryEndInput("NNNUMBER64"));
+            assertTrue(target.findBoundaryEndInput("NNUMBER64"));
         }
         @Test
         public void caseFalse() {
+            assertFalse(target.findBoundaryEndInput("NNUMBER64\n"));
             assertFalse(target.findBoundaryEndInput("NUMBER6464"));
-            assertFalse(target.findBoundaryEndInput("number64"));
         }
     }
 
@@ -169,27 +167,47 @@ public class BoundaryMatchersTest {
         }
         @Test
         public void caseTest() {
-
         }
         @Test
         public void caseFalse() {
-
         }
     }
 
     /**  */
     public static final class BoundaryWordTest extends TestBase {
         @BeforeClass
-        public void doBeforeClass() {
+        public static void doBeforeClass() {
             LOGGER.debug("EXP_BOUNDARY_WORD: pattern=\"{}\"", EXP_BOUNDARY_WORD);
         }
         @Test
-        public void caseTest() {
-
+        public void caseTrue() {
+            assertTrue(target.findBoundaryWord("NUMBER64"));
+            assertTrue(target.findBoundaryWord("##NUMBER64##"));
+            assertTrue(target.findBoundaryWord("He is NUMBER64"));
         }
         @Test
         public void caseFalse() {
+            assertFalse(target.findBoundaryWord("\u8f5f" + "NUMBER64" + "\u8f5f"));
+            assertFalse(target.findBoundaryWord("NNUMBER644"));
+        }
+    }
 
+    /**  */
+    public static final class BoundaryMultiByteWordTest extends TestBase {
+        @BeforeClass
+        public static void doBeforeClass() {
+            LOGGER.debug("EXP_BOUNDARY_MULTI_BYTE_WORD: pattern=\"{}\"", EXP_BOUNDARY_MULTI_BYTE_WORD);
+        }
+        @Test
+        public void caseTrue() {
+            assertTrue(target.findBoundaryMultiByteWord("\u8f5f\u5927\u8f14"));
+            assertTrue(target.findBoundaryMultiByteWord(" \u8f5f\u5927\u8f14 "));
+            assertTrue(target.findBoundaryMultiByteWord("#\u8f5f\u5927\u8f14#"));
+        }
+        @Test
+        public void caseFalse() {
+            assertFalse(target.findBoundaryMultiByteWord("\u8f5f"));
+            assertFalse(target.findBoundaryMultiByteWord("number64\u8f5f\u5927\u8f14number64"));
         }
     }
 
