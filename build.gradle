@@ -32,3 +32,24 @@ test {
 //  standardInput = System.in
 //}
 
+// ------------------------------------------------------------------------------------------------
+
+// Additional tasks for unit-test.
+
+// unit (unit-test, running specific class only)
+// This task cleans result everytime, and shows standard-output, and runs target test-class(es) only.
+task unit(type: Test, dependsOn: cleanTest) {
+
+    // command sample: xxx> gradle tTO -Ptarget="**/config/*"
+    if (project.hasProperty('target')) {
+        include "${project.target}"
+    }
+    description = 'unit'
+    testClassesDir = sourceSets.test.output.classesDir
+    classpath = sourceSets.test.runtimeClasspath
+    testLogging {
+        events 'started','failed', 'skipped'
+        showStandardStreams = true
+    }
+}
+
