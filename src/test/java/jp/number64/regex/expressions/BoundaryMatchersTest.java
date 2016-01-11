@@ -10,6 +10,10 @@ import jp.number64.regex.expressions.BoundaryMatchersTest.BoudaryEndInputTest;
 import jp.number64.regex.expressions.BoundaryMatchersTest.BoudaryTerminatorInputTest;
 import jp.number64.regex.expressions.BoundaryMatchersTest.BoundaryBeginningLineTest;
 import jp.number64.regex.expressions.BoundaryMatchersTest.BoundaryEndLineTest;
+import jp.number64.regex.expressions.BoundaryMatchersTest.BoundaryMultiByteWordTest;
+import jp.number64.regex.expressions.BoundaryMatchersTest.BoundaryNonWordTest;
+import jp.number64.regex.expressions.BoundaryMatchersTest.BoundaryWordTest;
+import jp.number64.regex.expressions.BoundaryMatchersTest.EndOfPreviousMatchTest;
 import jp.number64.regex.expressions.BoundaryMatchersTest.MatchingPartialTest;
 import jp.number64.regex.expressions.BoundaryMatchersTest.MatchingPerfectTest;
 
@@ -30,7 +34,11 @@ import org.slf4j.LoggerFactory;
     MatchingPerfectTest.class,
     BoudaryBeginningInputTest.class,
     BoudaryTerminatorInputTest.class,
-    BoudaryEndInputTest.class
+    BoudaryEndInputTest.class,
+    EndOfPreviousMatchTest.class,
+    BoundaryWordTest.class,
+    BoundaryMultiByteWordTest.class,
+    BoundaryNonWordTest.class
 })
 public class BoundaryMatchersTest {
     private static final Logger LOGGER = LoggerFactory.getLogger(BoundaryMatchersTest.class);
@@ -162,7 +170,7 @@ public class BoundaryMatchersTest {
     /**  */
     public static final class EndOfPreviousMatchTest extends TestBase {
         @BeforeClass
-        public void doBeforeClass() {
+        public static void doBeforeClass() {
             LOGGER.debug("EXP_END_OF_PREV_MATCH_ESC: pattern=\"{}\"", EXP_END_OF_PREV_MATCH_ESC);
         }
         @Test
