@@ -17,7 +17,7 @@ import org.slf4j.LoggerFactory;
  * [a-z&&[^bc]] a through z, except for b and c: ad-z  <br>
  * [a-z&&[^m-p]] a through z, and not m through p: a-lq-z  <br>
  *  <br>
- * memo : [abc[def]] = [[abc][def]] = [[ab][cd]][ef] <br>
+ * memo : [abc[def]] = [[abc][def]] = [[ab][cd][ef]] <br>
  */
 public class CharacterClass {
     private static final Logger LOGGER = LoggerFactory.getLogger(CharacterClass.class);
