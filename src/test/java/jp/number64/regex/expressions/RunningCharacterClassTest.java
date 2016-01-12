@@ -1,14 +1,14 @@
 package jp.number64.regex.expressions;
 
-import static jp.number64.regex.expressions.CharactorClass.*;
+import static jp.number64.regex.expressions.CharacterClass.*;
 import static org.junit.Assert.*;
-import jp.number64.regex.expressions.CharactorClassTest.NegationCharsTest;
-import jp.number64.regex.expressions.CharactorClassTest.RangeAndRangeTest;
-import jp.number64.regex.expressions.CharactorClassTest.RangeCharsTest;
-import jp.number64.regex.expressions.CharactorClassTest.RangeExceptingCharsTest;
-import jp.number64.regex.expressions.CharactorClassTest.RangeExceptingRangeTest;
-import jp.number64.regex.expressions.CharactorClassTest.RangeOrRangeTest;
-import jp.number64.regex.expressions.CharactorClassTest.SimpleCharsTest;
+import jp.number64.regex.expressions.RunningCharacterClassTest.NegationCharsTest;
+import jp.number64.regex.expressions.RunningCharacterClassTest.RangeAndRangeTest;
+import jp.number64.regex.expressions.RunningCharacterClassTest.RangeCharsTest;
+import jp.number64.regex.expressions.RunningCharacterClassTest.RangeExceptingCharsTest;
+import jp.number64.regex.expressions.RunningCharacterClassTest.RangeExceptingRangeTest;
+import jp.number64.regex.expressions.RunningCharacterClassTest.RangeOrRangeTest;
+import jp.number64.regex.expressions.RunningCharacterClassTest.SimpleCharsTest;
 
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -29,8 +29,8 @@ import org.slf4j.LoggerFactory;
     RangeExceptingCharsTest.class,
     RangeExceptingRangeTest.class
 })
-public class CharactorClassTest {
-    private static final Logger LOGGER = LoggerFactory.getLogger(CharactorClassTest.class);
+public class RunningCharacterClassTest {
+    private static final Logger LOGGER = LoggerFactory.getLogger(RunningCharacterClassTest.class);
 
     /**  */
     public static final class SimpleCharsTest extends TestBase {
@@ -169,10 +169,10 @@ public class CharactorClassTest {
 
     /** */
     public static abstract class TestBase {
-        protected CharactorClass target;
+        protected CharacterClass target;
         @Before
         public void doBefore() {
-            target = new CharactorClass();
+            target = new CharacterClass();
         }
     }
 }
