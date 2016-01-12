@@ -5,17 +5,17 @@ package jp.number64.regex.expressions;
 
 import static jp.number64.regex.expressions.BoundaryMatchers.*;
 import static org.junit.Assert.*;
-import jp.number64.regex.expressions.BoundaryMatchersTest.BoudaryBeginningInputTest;
-import jp.number64.regex.expressions.BoundaryMatchersTest.BoudaryEndInputTest;
-import jp.number64.regex.expressions.BoundaryMatchersTest.BoudaryTerminatorInputTest;
-import jp.number64.regex.expressions.BoundaryMatchersTest.BoundaryBeginningLineTest;
-import jp.number64.regex.expressions.BoundaryMatchersTest.BoundaryEndLineTest;
-import jp.number64.regex.expressions.BoundaryMatchersTest.BoundaryMultiByteWordTest;
-import jp.number64.regex.expressions.BoundaryMatchersTest.BoundaryNonWordTest;
-import jp.number64.regex.expressions.BoundaryMatchersTest.BoundaryWordTest;
-import jp.number64.regex.expressions.BoundaryMatchersTest.EndOfPreviousMatchTest;
-import jp.number64.regex.expressions.BoundaryMatchersTest.MatchingPartialTest;
-import jp.number64.regex.expressions.BoundaryMatchersTest.MatchingPerfectTest;
+import jp.number64.regex.expressions.RunningBoundaryMatchersTest.BoudaryBeginningInputTest;
+import jp.number64.regex.expressions.RunningBoundaryMatchersTest.BoudaryEndInputTest;
+import jp.number64.regex.expressions.RunningBoundaryMatchersTest.BoudaryTerminatorInputTest;
+import jp.number64.regex.expressions.RunningBoundaryMatchersTest.BoundaryBeginningLineTest;
+import jp.number64.regex.expressions.RunningBoundaryMatchersTest.BoundaryEndLineTest;
+import jp.number64.regex.expressions.RunningBoundaryMatchersTest.BoundaryMultiByteWordTest;
+import jp.number64.regex.expressions.RunningBoundaryMatchersTest.BoundaryNonWordTest;
+import jp.number64.regex.expressions.RunningBoundaryMatchersTest.BoundaryWordTest;
+import jp.number64.regex.expressions.RunningBoundaryMatchersTest.EndOfPreviousMatchTest;
+import jp.number64.regex.expressions.RunningBoundaryMatchersTest.MatchingPartialTest;
+import jp.number64.regex.expressions.RunningBoundaryMatchersTest.MatchingPerfectTest;
 
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -40,8 +40,8 @@ import org.slf4j.LoggerFactory;
     BoundaryMultiByteWordTest.class,
     BoundaryNonWordTest.class
 })
-public class BoundaryMatchersTest {
-    private static final Logger LOGGER = LoggerFactory.getLogger(BoundaryMatchersTest.class);
+public class RunningBoundaryMatchersTest {
+    private static final Logger LOGGER = LoggerFactory.getLogger(RunningBoundaryMatchersTest.class);
 
     /**  */
     public static final class BoundaryBeginningLineTest extends TestBase {

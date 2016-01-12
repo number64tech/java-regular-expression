@@ -2,13 +2,13 @@ package jp.number64.regex.expressions;
 
 import static jp.number64.regex.expressions.CharacterClass.*;
 import static org.junit.Assert.*;
-import jp.number64.regex.expressions.CharacterClassTest.NegationCharsTest;
-import jp.number64.regex.expressions.CharacterClassTest.RangeAndRangeTest;
-import jp.number64.regex.expressions.CharacterClassTest.RangeCharsTest;
-import jp.number64.regex.expressions.CharacterClassTest.RangeExceptingCharsTest;
-import jp.number64.regex.expressions.CharacterClassTest.RangeExceptingRangeTest;
-import jp.number64.regex.expressions.CharacterClassTest.RangeOrRangeTest;
-import jp.number64.regex.expressions.CharacterClassTest.SimpleCharsTest;
+import jp.number64.regex.expressions.RunningCharacterClassTest.NegationCharsTest;
+import jp.number64.regex.expressions.RunningCharacterClassTest.RangeAndRangeTest;
+import jp.number64.regex.expressions.RunningCharacterClassTest.RangeCharsTest;
+import jp.number64.regex.expressions.RunningCharacterClassTest.RangeExceptingCharsTest;
+import jp.number64.regex.expressions.RunningCharacterClassTest.RangeExceptingRangeTest;
+import jp.number64.regex.expressions.RunningCharacterClassTest.RangeOrRangeTest;
+import jp.number64.regex.expressions.RunningCharacterClassTest.SimpleCharsTest;
 
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -29,8 +29,8 @@ import org.slf4j.LoggerFactory;
     RangeExceptingCharsTest.class,
     RangeExceptingRangeTest.class
 })
-public class CharacterClassTest {
-    private static final Logger LOGGER = LoggerFactory.getLogger(CharacterClassTest.class);
+public class RunningCharacterClassTest {
+    private static final Logger LOGGER = LoggerFactory.getLogger(RunningCharacterClassTest.class);
 
     /**  */
     public static final class SimpleCharsTest extends TestBase {
