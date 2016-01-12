@@ -19,8 +19,8 @@ import org.slf4j.LoggerFactory;
  *  <br>
  * memo : [abc[def]] = [[abc][def]] = [[ab][cd]][ef] <br>
  */
-public class CharactorClass {
-    private static final Logger LOGGER = LoggerFactory.getLogger(CharactorClass.class);
+public class CharacterClass {
+    private static final Logger LOGGER = LoggerFactory.getLogger(CharacterClass.class);
 
     /** [abc] a, b, or c (simple class)  */
     public static final String EXP_SIMPLE_CHARS = "[nN][uU]MBER64";
