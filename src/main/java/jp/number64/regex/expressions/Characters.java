@@ -36,25 +36,25 @@ public class Characters {
     private static final Logger LOGGER = LoggerFactory.getLogger(Characters.class);
 
     /** \0n The character with octal value 0n (0 <= n <= 7) */
-    public static final String EXP_OCTAL_VALUE_1_DIGIT = "";
-    /** \0nn The character with octal value 0nn (0 <= n <= 7)  */
-    public static final String EXP_OCTAL_VALUE_2_DIGITS = "";
-    /** \0mnn The character with octal value 0mnn (0 <= m <= 3, 0 <= n <= 7)  */
-    public static final String EXP_OCTAL_VALUE_3_DIGITS = "";
-    /** \xhh The character with hexadecimal value 0xhh  */
-    public static final String EXP_HEX_VALUE_2_DIGITS = "";
-    /** \\uhhhh The character with hexadecimal value 0xhhhh  */
-    public static final String EXP_HEX_VALUE_4_DIGITS = "";
+    public static final String EXP_OCTAL_VALUE_1_DIGIT = "\\07";
+    /** \0nn The character with octal value 0nn (0 <= n <= 7)  060==48==0x30 "0" */
+    public static final String EXP_OCTAL_VALUE_2_DIGITS = "\\060";
+    /** \0mnn The character with octal value 0mnn (0 <= m <= 3, 0 <= n <= 7) 0141==97==0x61 "a" */
+    public static final String EXP_OCTAL_VALUE_3_DIGITS = "\\0141";
+    /** \xhh The character with hexadecimal value 0xhh 0x41==65 "A" */
+    public static final String EXP_HEX_VALUE_2_DIGITS = "\\x41";
+    /** \\uhhhh The character with hexadecimal value 0xhhhh \\u3042 */
+    public static final String EXP_HEX_VALUE_4_DIGITS = "\\u3042";
     /** \x{h...h} The character with hexadecimal value 0xh...h (Character.MIN_CODE_POINT <= 0xh...h <= Character.MAX_CODE_POINT)  */
-    public static final String EXP_HEX_VALUE_FLEX_DIGITS = "";
+    public static final String EXP_HEX_VALUE_FLEX_DIGITS = "\\x{20B9F}";
     /** \t The tab character ('\u0009')  */
-    public static final String EXP_ESC_TAB = "";
+    public static final String EXP_ESC_TAB = "\\t";
     /** \n The newline (line feed) character ('\u000A')  */
-    public static final String EXP_ESC_LINE_FEED = "";
+    public static final String EXP_ESC_LINE_FEED = "\\n";
     /** \r The carriage-return character ('\u000D')  */
-    public static final String EXP_ESC_CARRIAGE_RETURN = "";
+    public static final String EXP_ESC_CARRIAGE_RETURN = "\\r";
     /** \R Any Unicode linebreak sequence, is equivalent to \u000D\u000A|[\u000A\u000B\u000C\u000D\u0085\u2028\u2029] */
-    public static final String EXP_ESC_LINE_BREAK = "";
+    public static final String EXP_ESC_LINE_BREAK = "\\R";
 
     // -----------------------------------------------------------------------------------------------
 

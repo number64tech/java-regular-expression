@@ -42,17 +42,15 @@ public class RunningCharactersTest {
     public static final class CharOctalValue1DigitTest extends TestBase {
         @BeforeClass
         public static void doBeforeClass() {
-            LOGGER.debug("EXP_OCTAL_VALUE_1_DIGIT: \"\" pattern=\"{}\"", EXP_OCTAL_VALUE_1_DIGIT);
+            LOGGER.debug("EXP_OCTAL_VALUE_1_DIGIT: \"??\" pattern=\"{}\"", EXP_OCTAL_VALUE_1_DIGIT);
         }
         @Test
         public void caseTrue() {
-            assertTrue(true);
-            fail(); // this method had not been implemented.
+            assertTrue(target.findOctalValue1Digit("\u0007"));
         }
         @Test
         public void caseFalse() {
-            assertFalse(false);
-            fail(); // this method had not been implemented.
+            assertFalse(target.findOctalValue1Digit("\u0008"));
         }
     }
 
@@ -60,17 +58,17 @@ public class RunningCharactersTest {
     public static final class CharOctalValue2DigitsTest extends TestBase {
         @BeforeClass
         public static void doBeforeClass() {
-            LOGGER.debug("EXP_OCTAL_VALUE_2_DIGITS: pattern=\"{}\"", EXP_OCTAL_VALUE_2_DIGITS);
+            LOGGER.debug("EXP_OCTAL_VALUE_2_DIGITS: \"0\" pattern=\"{}\"", EXP_OCTAL_VALUE_2_DIGITS);
         }
         @Test
         public void caseTrue() {
-            assertTrue(true);
-            fail(); // this method had not been implemented.
+            assertTrue(target.findOctalValue2Digits("0"));
+            assertTrue(target.findOctalValue2Digits("\u0030"));
         }
         @Test
         public void caseFalse() {
-            assertFalse(false);
-            fail(); // this method had not been implemented.
+            assertFalse(target.findOctalValue2Digits("1"));
+            assertFalse(target.findOctalValue2Digits("\u0031"));
         }
     }
 
@@ -78,17 +76,17 @@ public class RunningCharactersTest {
     public static final class CharOctalValue3DigitsTest extends TestBase {
         @BeforeClass
         public static void doBeforeClass() {
-            LOGGER.debug("EXP_OCTAL_VALUE_3_DIGITS: pattern=\"{}\"", EXP_OCTAL_VALUE_3_DIGITS);
+            LOGGER.debug("EXP_OCTAL_VALUE_3_DIGITS: \"a\" pattern=\"{}\"", EXP_OCTAL_VALUE_3_DIGITS);
         }
         @Test
         public void caseTrue() {
-            assertTrue(true);
-            fail(); // this method had not been implemented.
+            assertTrue(target.findOctalValue3Digits("a"));
+            assertTrue(target.findOctalValue3Digits("\u0061"));
         }
         @Test
         public void caseFalse() {
-            assertFalse(false);
-            fail(); // this method had not been implemented.
+            assertFalse(target.findOctalValue3Digits("A"));
+            assertFalse(target.findOctalValue3Digits("\u0062"));
         }
     }
 
@@ -96,17 +94,17 @@ public class RunningCharactersTest {
     public static final class CharHexValue2DigitsTest extends TestBase {
         @BeforeClass
         public static void doBeforeClass() {
-            LOGGER.debug("EXP_HEX_VALUE_2_DIGITS: pattern=\"{}\"", EXP_HEX_VALUE_2_DIGITS);
+            LOGGER.debug("EXP_HEX_VALUE_2_DIGITS: \"A\" pattern=\"{}\"", EXP_HEX_VALUE_2_DIGITS);
         }
         @Test
         public void caseTrue() {
-            assertTrue(true);
-            fail(); // this method had not been implemented.
+            assertTrue(target.findHexValue2Digits("A"));
+            assertTrue(target.findHexValue2Digits("\u0041"));
         }
         @Test
         public void caseFalse() {
-            assertFalse(false);
-            fail(); // this method had not been implemented.
+            assertFalse(target.findHexValue2Digits("a"));
+            assertFalse(target.findHexValue2Digits("\u0042"));
         }
     }
 
@@ -114,17 +112,15 @@ public class RunningCharactersTest {
     public static final class CharHexValue4DigitsTest extends TestBase {
         @BeforeClass
         public static void doBeforeClass() {
-            LOGGER.debug("EXP_HEX_VALUE_4_DIGITS: pattern=\"{}\"", EXP_HEX_VALUE_4_DIGITS);
+            LOGGER.debug("EXP_HEX_VALUE_4_DIGITS: \"あ\" pattern=\"{}\"", EXP_HEX_VALUE_4_DIGITS);
         }
         @Test
         public void caseTrue() {
-            assertTrue(true);
-            fail(); // this method had not been implemented.
+            assertTrue(target.findHexValue4Digits("\u3042"));
         }
         @Test
         public void caseFalse() {
-            assertFalse(false);
-            fail(); // this method had not been implemented.
+            assertFalse(target.findHexValue4Digits("\\u3042"));
         }
     }
 
@@ -132,17 +128,18 @@ public class RunningCharactersTest {
     public static final class CharHexValueFlexDigitsTest extends TestBase {
         @BeforeClass
         public static void doBeforeClass() {
-            LOGGER.debug("EXP_HEX_VALUE_FLEX_DIGITS: pattern=\"{}\"", EXP_HEX_VALUE_FLEX_DIGITS);
+            LOGGER.debug("EXP_HEX_VALUE_FLEX_DIGITS: \"𠮟\" pattern=\"{}\"", EXP_HEX_VALUE_FLEX_DIGITS);
+            int \u0061\u0062\u0063 = 1;
+            LOGGER.debug("int \u0061\u0062\u0063 = {}", abc);
         }
         @Test
         public void caseTrue() {
-            assertTrue(true);
-            fail(); // this method had not been implemented.
+            assertTrue(target.findHexValueFlexDigits("𠮟"));
         }
         @Test
         public void caseFalse() {
-            assertFalse(false);
-            fail(); // this method had not been implemented.
+            // For pattern '\\uXXXX', XXXX must be 4-length. So, this sample means '\\u20B9' + 'F'.
+            assertFalse(target.findHexValueFlexDigits("\u20B9F"));
         }
     }
 
@@ -150,17 +147,11 @@ public class RunningCharactersTest {
     public static final class CharEscTabTest extends TestBase {
         @BeforeClass
         public static void doBeforeClass() {
-            LOGGER.debug("EXP_ESC_TAB: pattern=\"{}\"", EXP_ESC_TAB);
+            LOGGER.debug("EXP_ESC_TAB: '    ' pattern=\"{}\"", EXP_ESC_TAB);
         }
         @Test
         public void caseTrue() {
-            assertTrue(true);
-            fail(); // this method had not been implemented.
-        }
-        @Test
-        public void caseFalse() {
-            assertFalse(false);
-            fail(); // this method had not been implemented.
+            assertTrue(target.findEscTab("\t"));
         }
     }
 
@@ -172,13 +163,12 @@ public class RunningCharactersTest {
         }
         @Test
         public void caseTrue() {
-            assertTrue(true);
-            fail(); // this method had not been implemented.
+            assertTrue(target.findEscLineFeed("\n"));
+            assertTrue(target.findEscLineFeed(String.valueOf(Character.toChars(0x000A)[0])));
         }
         @Test
         public void caseFalse() {
-            assertFalse(false);
-            fail(); // this method had not been implemented.
+            assertFalse(target.findEscLineFeed("\r"));
         }
     }
 
@@ -190,13 +180,12 @@ public class RunningCharactersTest {
         }
         @Test
         public void caseTrue() {
-            assertTrue(true);
-            fail(); // this method had not been implemented.
+            assertTrue(target.findEscCarriageReturn("\r"));
+            assertTrue(target.findEscCarriageReturn(String.valueOf(Character.toChars(0x000D)[0])));
         }
         @Test
         public void caseFalse() {
-            assertFalse(false);
-            fail(); // this method had not been implemented.
+            assertFalse(target.findEscCarriageReturn("\n"));
         }
     }
 
@@ -204,17 +193,30 @@ public class RunningCharactersTest {
     public static final class CharEscLineBreakTest extends TestBase {
         @BeforeClass
         public static void doBeforeClass() {
+            // \ u0085 NEW-LINE
+            // \ u2028 LINE SEPARATOR
+            // \ u2029 PARAGRAPH SEPARATOR
             LOGGER.debug("EXP_ESC_LINE_BREAK: pattern=\"{}\"", EXP_ESC_LINE_BREAK);
         }
         @Test
         public void caseTrue() {
-            assertTrue(true);
-            fail(); // this method had not been implemented.
+            String char000b = String.valueOf(Character.toChars(0x000B)[0]);
+            String char000c = String.valueOf(Character.toChars(0x000C)[0]);
+            String char0085 = String.valueOf(Character.toChars(0x0085)[0]);
+            String char2028 = String.valueOf(Character.toChars(0x2028)[0]);
+            String char2029 = String.valueOf(Character.toChars(0x2029)[0]);
+            assertTrue(target.findEscLineBreak("\r\n"));
+            assertTrue(target.findEscLineBreak("\r"));
+            assertTrue(target.findEscLineBreak(char000b));
+            assertTrue(target.findEscLineBreak(char000c));
+            assertTrue(target.findEscLineBreak("\n"));
+            assertTrue(target.findEscLineBreak(char0085));
+            assertTrue(target.findEscLineBreak(char2028));
+            assertTrue(target.findEscLineBreak(char2029));
         }
         @Test
         public void caseFalse() {
-            assertFalse(false);
-            fail(); // this method had not been implemented.
+            assertFalse(target.findEscLineBreak("\t"));
         }
     }
 
