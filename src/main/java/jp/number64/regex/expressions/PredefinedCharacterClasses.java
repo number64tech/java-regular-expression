@@ -24,27 +24,27 @@ public class PredefinedCharacterClasses {
     private static final Logger LOGGER = LoggerFactory.getLogger(PredefinedCharacterClasses.class);
 
     /** . Any character (may or may not match line terminators) */
-    public static final String EXP_ANY_CHARACTER = "";
+    public static final String EXP_ANY_CHARACTER = ".";
     /** \d A digit: [0-9] */
-    public static final String EXP_A_DIGIT = "";
+    public static final String EXP_A_DIGIT = "\\d";
     /** \D A non-digit: [^0-9] */
-    public static final String EXP_A_NON_DIGIT = "";
+    public static final String EXP_A_NON_DIGIT = "\\D";
     /** \h A horizontal whitespace character: [ \t\xA0\u1680\u180e\u2000-\u200a\u202f\u205f\u3000] */
-    public static final String EXP_HORIZONTAL_WHITE_SPACE = "";
+    public static final String EXP_HORIZONTAL_WHITE_SPACE = "\\h";
     /** \H A non-horizontal whitespace character: [^\h] */
-    public static final String EXP_NON_HORIZONTAL_WHITE_SPACE = "";
+    public static final String EXP_NON_HORIZONTAL_WHITE_SPACE = "\\H";
     /** \s A whitespace character: [ \t\n\x0B\f\r] */
-    public static final String EXP_WHITE_SPACE = "";
+    public static final String EXP_WHITE_SPACE = "\\s";
     /** \S A non-whitespace character: [^\s] */
-    public static final String EXP_NON_WHITE_SPACE = "";
+    public static final String EXP_NON_WHITE_SPACE = "\\S";
     /** \v A vertical whitespace character: [\n\x0B\f\r\x85\u2028\u2029] */
-    public static final String EXP_VERTICAL_WHITE_SPACE = "";
+    public static final String EXP_VERTICAL_WHITE_SPACE = "\\v";
     /** \V A non-vertical whitespace character: [^\v] */
-    public static final String EXP_NON_VERTICAL_WHITE_SPACE = "";
+    public static final String EXP_NON_VERTICAL_WHITE_SPACE = "\\V";
     /** \w A word character: [a-zA-Z_0-9] */
-    public static final String EXP_A_WORD_CHARACTER = "";
+    public static final String EXP_A_WORD_CHARACTER = "\\w";
     /** \W A non-word character: [^\w] */
-    public static final String EXP_A_NON_WORD_CHARACTER = "";
+    public static final String EXP_A_NON_WORD_CHARACTER = "\\W";
 
     // -----------------------------------------------------------------------------------------------
 
