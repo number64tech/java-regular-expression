@@ -48,13 +48,9 @@ public class RunningPredefinedCharacterClassTest {
         }
         @Test
         public void caseTrue() {
-            assertTrue(target.findAnyCharacter(""));
-            fail();
-        }
-        @Test
-        public void caseFalse() {
-            assertFalse(target.findAnyCharacter(""));
-            fail();
+            assertTrue(target.findAnyCharacter("0"));
+            assertTrue(target.findAnyCharacter("a"));
+            assertTrue(target.findAnyCharacter("\u8f5f"));
         }
     }
 
@@ -66,13 +62,13 @@ public class RunningPredefinedCharacterClassTest {
         }
         @Test
         public void caseTrue() {
-            assertTrue(target.findDigit(""));
-            fail();
+            assertTrue(target.findDigit("0"));
+            assertTrue(target.findDigit("9"));
         }
         @Test
         public void caseFalse() {
-            assertFalse(target.findDigit(""));
-            fail();
+            assertFalse(target.findDigit("a"));
+            assertFalse(target.findDigit("\uff10"));
         }
     }
 
