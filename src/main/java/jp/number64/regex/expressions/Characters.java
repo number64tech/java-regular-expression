@@ -72,52 +72,62 @@ public class Characters {
     private static final Pattern PATTERN_LINE_BREAK = Pattern.compile(EXP_ESC_LINE_BREAK);
 
     public boolean findOctalValue1Digit(String text) {
-        LOGGER.debug("text:{}", text);
-        return PATTERN_OCTAL_VALUE_1_DIGIT.matcher(text).find();
+        boolean result = PATTERN_OCTAL_VALUE_1_DIGIT.matcher(text).find();
+        LOGGER.debug("{}:{}", result, text);
+        return result;
     }
 
     public boolean findOctalValue2Digits(String text) {
-        LOGGER.debug("text:{}", text);
-        return PATTERN_OCTAL_VALUE_2_DIGITS.matcher(text).find();
+        boolean result = PATTERN_OCTAL_VALUE_2_DIGITS.matcher(text).find();
+        LOGGER.debug("{}:{}", result, text);
+        return result;
     }
 
     public boolean findOctalValue3Digits(String text) {
-        LOGGER.debug("text:{}", text);
-        return PATTERN_OCTAL_VALUE_3_DIGITS.matcher(text).find();
+        boolean result = PATTERN_OCTAL_VALUE_3_DIGITS.matcher(text).find();
+        LOGGER.debug("{}:{}", result, text);
+        return result;
     }
 
     public boolean findHexValue2Digits(String text) {
-        LOGGER.debug("text:{}", text);
-        return PATTERN_HEX_VALUE_2_DIGITS.matcher(text).find();
+        boolean result = PATTERN_HEX_VALUE_2_DIGITS.matcher(text).find();
+        LOGGER.debug("{}:{}", result, text);
+        return result;
     }
 
     public boolean findHexValue4Digits(String text) {
-        LOGGER.debug("text:{}", text);
-        return PATTERN_HEX_VALUE_4_DIGITS.matcher(text).find();
+        boolean result = PATTERN_HEX_VALUE_4_DIGITS.matcher(text).find();
+        LOGGER.debug("{}:{}", result, text);
+        return result;
     }
 
     public boolean findHexValueFlexDigits(String text) {
-        LOGGER.debug("text:{}", text);
-        return PATTERN_HEX_VALUE_FLEX_DIGITS.matcher(text).find();
+        boolean result = PATTERN_HEX_VALUE_FLEX_DIGITS.matcher(text).find();
+        LOGGER.debug("{}:{}", result, text);
+        return result;
     }
 
     public boolean findEscTab(String text) {
-        LOGGER.debug("text:{}", text);
-        return PATTERN_ESC_TAB.matcher(text).find();
+        boolean result = PATTERN_ESC_TAB.matcher(text).find();
+        LOGGER.debug("{}:{}", result, text);
+        return result;
     }
 
     public boolean findEscLineFeed(String text) {
-        LOGGER.debug("text:{}", text);
-        return PATTERN_ESC_LINE_FEED.matcher(text).find();
+        boolean result = PATTERN_ESC_LINE_FEED.matcher(text).find();
+        LOGGER.debug("{}:{}", result, text);
+        return result;
     }
 
     public boolean findEscCarriageReturn(String text) {
-        LOGGER.debug("text:{}", text);
-        return PATTERN_CARRIAGE_RETURN.matcher(text).find();
+        boolean result = PATTERN_CARRIAGE_RETURN.matcher(text).find();
+        LOGGER.debug("{}:{}", result, text);
+        return result;
     }
 
     public boolean findEscLineBreak(String text) {
-        LOGGER.debug("text:{}", text);
-        return PATTERN_LINE_BREAK.matcher(text).find();
+        boolean result = PATTERN_LINE_BREAK.matcher(text).find();
+        LOGGER.debug("{}:{}", result, text);
+        return result;
     }
 }

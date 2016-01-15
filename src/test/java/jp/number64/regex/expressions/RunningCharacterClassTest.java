@@ -67,6 +67,7 @@ public class RunningCharacterClassTest {
             assertFalse(target.findNegationChars("NuMBER64"));
             assertFalse(target.findNegationChars("nuMBER64"));
             assertFalse(target.findNegationChars("NUMBER64"));
+            assertFalse(target.findNegationChars("OMBER64"));
         }
     }
 

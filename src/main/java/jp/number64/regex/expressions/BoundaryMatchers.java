@@ -43,7 +43,7 @@ public class BoundaryMatchers {
     /** \b A word boundary */
     public static final String EXP_BOUNDARY_WORD = "\\bNUMBER64\\b";
     /** \b A word boundary (multibyte sample) */
-    public static final String EXP_BOUNDARY_MULTI_BYTE_WORD = "\\b" + "\u8f5f\u5927\u8f14" + "\\b";
+    public static final String EXP_BOUNDARY_MULTI_BYTE_WORD = "\\b" + "\\u8f5f\\u5927\\u8f14" + "\\b";
     /** \B A non-word boundary */
     public static final String EXP_BOUNDARY_NON_WORD = "\\BNUMBER64\\B";
 
@@ -64,59 +64,68 @@ public class BoundaryMatchers {
     private static final Pattern PATTERN_BOUNDARY_NON_WORD = Pattern.compile(EXP_BOUNDARY_NON_WORD);
 
     public boolean findBoundaryBeginningLine(String text) {
-        LOGGER.debug("text:{}", text);
-        return PATTERN_BOUNDARY_BEGINNING_LINE.matcher(text).find();
+        boolean result = PATTERN_BOUNDARY_BEGINNING_LINE.matcher(text).find();
+        LOGGER.debug("{}:{}", result, text);
+        return result;
     }
 
     public boolean findBoundaryEndLine(String text) {
-        LOGGER.debug("text:{}", text);
-        return PATTERN_BOUNDARY_END_LINE.matcher(text).find();
+        boolean result = PATTERN_BOUNDARY_END_LINE.matcher(text).find();
+        LOGGER.debug("{}:{}", result, text);
+        return result;
     }
 
     public boolean findMatchingPartial(String text) {
-        LOGGER.debug("text:{}", text);
-        return PATTERN_MATCHING_PARTIAL.matcher(text).find();
+        boolean result = PATTERN_MATCHING_PARTIAL.matcher(text).find();
+        LOGGER.debug("{}:{}", result, text);
+        return result;
     }
 
     public boolean findMatchingPerfecr(String text) {
-        LOGGER.debug("text:{}", text);
-        return PATTERN_MATCHING_PERFECT.matcher(text).find();
+        boolean result = PATTERN_MATCHING_PERFECT.matcher(text).find();
+        LOGGER.debug("{}:{}", result, text);
+        return result;
     }
 
     public boolean findBoundaryBeginnigInput(String text) {
-        LOGGER.debug("text:{}", text);
-        return PATTERN_BOUNDARY_BEGINNING_INPUT.matcher(text).find();
+        boolean result = PATTERN_BOUNDARY_BEGINNING_INPUT.matcher(text).find();
+        LOGGER.debug("{}:{}", result, text);
+        return result;
     }
 
     public boolean findBoundaryTerminator(String text) {
-        LOGGER.debug("text:{}", text);
-        return PATTERN_BOUNDARY_TERMINATOR.matcher(text).find();
+        boolean result = PATTERN_BOUNDARY_TERMINATOR.matcher(text).find();
+        LOGGER.debug("{}:{}", result, text);
+        return result;
     }
 
     public boolean findBoundaryEndInput(String text) {
-        LOGGER.debug("text:{}", text);
-        return PATTERN_BOUNDARY_END_INPUT.matcher(text).find();
+        boolean result = PATTERN_BOUNDARY_END_INPUT.matcher(text).find();
+        LOGGER.debug("{}:{}", result, text);
+        return result;
     }
 
     public boolean findEndOfPreviousMatch(String text) {
-        LOGGER.debug("text:{}", text);
-        return PATTERN_END_OF_PREV_MATCH_ESC.matcher(text).find();
+        boolean result = PATTERN_END_OF_PREV_MATCH_ESC.matcher(text).find();
+        LOGGER.debug("{}:{}", result, text);
+        return result;
     }
 
     public boolean findBoundaryWord(String text) {
-        LOGGER.debug("text:{}", text);
-        return PATTERN_BOUNDARY_WORD.matcher(text).find();
+        boolean result = PATTERN_BOUNDARY_WORD.matcher(text).find();
+        LOGGER.debug("{}:{}", result, text);
+        return result;
     }
 
     public boolean findBoundaryMultiByteWord(String text) {
-        LOGGER.debug("text:{}", text);
-        return PATTERN_BOUNDARY_MULTI_BYTE_WORD.matcher(text).find();
+        boolean result = PATTERN_BOUNDARY_MULTI_BYTE_WORD.matcher(text).find();
+        LOGGER.debug("{}:{}", result, text);
+        return result;
     }
 
     public boolean findBoundaryNonWord(String text) {
-        LOGGER.debug("text:{}", text);
-        return PATTERN_BOUNDARY_NON_WORD.matcher(text).find();
+        boolean result = PATTERN_BOUNDARY_NON_WORD.matcher(text).find();
+        LOGGER.debug("{}:{}", result, text);
+        return result;
     }
-
-
 }

@@ -51,37 +51,44 @@ public class CharacterClass {
     private static final Pattern PATTERN_RANGE_EXCEPTIONG_RANGE = Pattern.compile(EXP_RANGE_EXCEPTING_RANGE);
 
     public boolean findSimpleChars(String text) {
-        LOGGER.debug("text:{}", text);
-        return PATTERN_SIMPLE_CHARS.matcher(text).find();
+        boolean result = PATTERN_SIMPLE_CHARS.matcher(text).find();
+        LOGGER.debug("{}:{}", result, text);
+        return result;
     }
 
     public boolean findNegationChars(String text) {
-        LOGGER.debug("text:{}", text);
-        return PATTERN_NEGATION_CHARS.matcher(text).find();
+        boolean result = PATTERN_NEGATION_CHARS.matcher(text).find();
+        LOGGER.debug("{}:{}", result, text);
+        return result;
     }
 
     public boolean findRangeChars(String text) {
-        LOGGER.debug("text:{}", text);
-        return PATTERN_RANGE_CHARS.matcher(text).find();
+        boolean result = PATTERN_RANGE_CHARS.matcher(text).find();
+        LOGGER.debug("{}:{}", result, text);
+        return result;
     }
 
     public boolean findRangeOrRange(String text) {
-        LOGGER.debug("text:{}", text);
-        return PATTERN_RANGE_OR_RANGE.matcher(text).find();
+        boolean result = PATTERN_RANGE_OR_RANGE.matcher(text).find();
+        LOGGER.debug("{}:{}", result, text);
+        return result;
     }
 
     public boolean findRangeAndRange(String text) {
-        LOGGER.debug("text:{}", text);
-        return PATTERN_RANGE_AND_RANGE.matcher(text).find();
+        boolean result = PATTERN_RANGE_AND_RANGE.matcher(text).find();
+        LOGGER.debug("{}:{}", result, text);
+        return result;
     }
 
     public boolean findRangeExceptingChars(String text) {
-        LOGGER.debug("text:{}", text);
-        return PATTERN_RANGE_EXCEPTING_CHARS.matcher(text).find();
+        boolean result = PATTERN_RANGE_EXCEPTING_CHARS.matcher(text).find();
+        LOGGER.debug("{}:{}", result, text);
+        return result;
     }
 
     public boolean findRangeExceptingRange(String text) {
-        LOGGER.debug("text:{}", text);
-        return PATTERN_RANGE_EXCEPTIONG_RANGE.matcher(text).find();
+        boolean result = PATTERN_RANGE_EXCEPTIONG_RANGE.matcher(text).find();
+        LOGGER.debug("{}:{}", result, text);
+        return result;
     }
 }
