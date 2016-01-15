@@ -28,7 +28,7 @@ public class PredefinedCharacterClasses {
     /** \d A digit: [0-9] */
     public static final String EXP_A_DIGIT = "\\d";
     /** \D A non-digit: [^0-9] */
-    public static final String EXP_A_NON_DIGIT = "\\D";
+    public static final String EXP_A_NON_DIGIT = "\\D64";
     /** \h A horizontal whitespace character: [ \t\xA0\u1680\u180e\u2000-\u200a\u202f\u205f\u3000] */
     public static final String EXP_HORIZONTAL_WHITE_SPACE = "\\h";
     /** \H A non-horizontal whitespace character: [^\h] */
