@@ -24,37 +24,38 @@ import org.slf4j.LoggerFactory;
  *  <br>
  * note: from wikipedia, PUNCUATION means <br>
  * "the use of spacing, conventional signs, and certain typographical devices as aids to the understanding and correct reading,
- * both silently and aloud, of handwritten and printed texts."
+ * both silently and aloud, of handwritten and printed texts." <br>
+ * note2: from official site, PUNCUATION doesn't contain "\", but it does.
  */
 public class PosixCharacterClasses {
     private static final Logger LOGGER = LoggerFactory.getLogger(PosixCharacterClasses.class);
 
     /** \p{Lower} A lower-case alphabetic character: [a-z] */
-    public static final String EXP_LOWER_ALPHA = "";
+    public static final String EXP_LOWER_ALPHA = "\\p{Lower}";
     /** \p{Upper} An upper-case alphabetic character:[A-Z] */
-    public static final String EXP_UPPER_ALPHA = "";
+    public static final String EXP_UPPER_ALPHA = "\\p{Upper}";
     /** \p{ASCII} All ASCII:[\x00-\x7F] */
-    public static final String EXP_ASCII = "";
+    public static final String EXP_ASCII = "\\p{ASCII}";
     /** \p{Alpha} An alphabetic character:[\p{Lower}\p{Upper}] */
-    public static final String EXP_ALPHA = "";
+    public static final String EXP_ALPHA = "\\p{Alpha}";
     /** \p{Digit} A decimal digit: [0-9] */
-    public static final String EXP_DIGIT = "";
+    public static final String EXP_DIGIT = "\\p{Digit}";
     /** \p{Alnum} An alphanumeric character:[\p{Alpha}\p{Digit}] */
-    public static final String EXP_ALNUM = "";
+    public static final String EXP_ALNUM = "\\p{Alnum}";
     /** \p{Punct} Punctuation: One of !"#$%&'()*+,-./:;<=>?@[]^_`{|}~ */
-    public static final String EXP_PUNCATION = "";
+    public static final String EXP_PUNCATION = "\\p{Punct}";
     /** \p{Graph} A visible character: [\p{Alnum}\p{Punct}] */
-    public static final String EXP_GRAPH = "";
+    public static final String EXP_GRAPH = "\\p{Graph}";
     /** \p{Print} A printable character: [\p{Graph}\x20] */
-    public static final String EXP_PRINT = "";
+    public static final String EXP_PRINT = "\\p{Print}";
     /** \p{Blank} A space or a tab: [ \t] */
-    public static final String EXP_BLANK = "";
+    public static final String EXP_BLANK = "\\p{Blank}";
     /** \p{Cntrl} A control character: [\x00-\x1F\x7F] */
-    public static final String EXP_CNTRL = "";
+    public static final String EXP_CNTRL = "\\p{Cntrl}";
     /** \p{XDigit} A hexadecimal digit: [0-9a-fA-F] */
-    public static final String EXP_XDIGIT = "";
+    public static final String EXP_XDIGIT = "\\p{XDigit}";
     /** \p{Space} A whitespace character: [ \t\n\x0B\f\r] */
-    public static final String EXP_SPACE = "";
+    public static final String EXP_SPACE = "\\p{Space}";
 
     // -----------------------------------------------------------------------------------------------
 
@@ -73,67 +74,80 @@ public class PosixCharacterClasses {
     private static final Pattern PATTERN_SPACE = Pattern.compile(EXP_SPACE);
 
     public boolean findLowerAplha(String text) {
-        LOGGER.debug("text:{}", text);
-        return PATTERN_LOWER_ALPHA.matcher(text).find();
+        boolean result = PATTERN_LOWER_ALPHA.matcher(text).find();
+        LOGGER.debug("{}:{}", result, text);
+        return result;
     }
 
     public boolean findUpperAlpha(String text) {
-        LOGGER.debug("text:{}", text);
-        return PATTERN_UPPER_ALPHA.matcher(text).find();
+        boolean result = PATTERN_UPPER_ALPHA.matcher(text).find();
+        LOGGER.debug("{}:{}", result, text);
+        return result;
     }
 
     public boolean findAscii(String text) {
-        LOGGER.debug("text:{}", text);
-        return PATTERN_ASCII.matcher(text).find();
+        boolean result = PATTERN_ASCII.matcher(text).find();
+        LOGGER.debug("{}:{}", result, text);
+        return result;
     }
 
     public boolean findAlpha(String text) {
-        LOGGER.debug("text:{}", text);
-        return PATTERN_ALPHA.matcher(text).find();
+        boolean result = PATTERN_ALPHA.matcher(text).find();
+        LOGGER.debug("{}:{}", result, text);
+        return result;
     }
 
     public boolean findDigit(String text) {
-        LOGGER.debug("text:{}", text);
-        return PATTERN_DIGIT.matcher(text).find();
+        boolean result = PATTERN_DIGIT.matcher(text).find();
+        LOGGER.debug("{}:{}", result, text);
+        return result;
     }
 
     public boolean findAlnum(String text) {
-        LOGGER.debug("text:{}", text);
-        return PATTERN_ALNUM.matcher(text).find();
+        boolean result = PATTERN_ALNUM.matcher(text).find();
+        LOGGER.debug("{}:{}", result, text);
+        return result;
     }
 
     public boolean findPuncation(String text) {
-        LOGGER.debug("text:{}", text);
-        return PATTERN_PUNCATION.matcher(text).find();
+        boolean result = PATTERN_PUNCATION.matcher(text).find();
+        LOGGER.debug("{}:{}", result, text);
+        return result;
     }
 
     public boolean findGraph(String text) {
-        LOGGER.debug("text:{}", text);
-        return PATTERN_GRAPH.matcher(text).find();
+        boolean result = PATTERN_GRAPH.matcher(text).find();
+        LOGGER.debug("{}:{}", result, text);
+        return result;
     }
 
     public boolean findPrint(String text) {
-        LOGGER.debug("text:{}", text);
-        return PATTERN_PRINT.matcher(text).find();
+        boolean result = PATTERN_PRINT.matcher(text).find();
+        LOGGER.debug("{}:{}", result, text);
+        return result;
     }
 
     public boolean findBlank(String text) {
-        LOGGER.debug("text:{}", text);
-        return PATTERN_BLANK.matcher(text).find();
+        boolean result = PATTERN_BLANK.matcher(text).find();
+        LOGGER.debug("{}:{}", result, text);
+        return result;
     }
 
     public boolean findCntrl(String text) {
-        LOGGER.debug("text:{}", text);
-        return PATTERN_CNTRL.matcher(text).find();
+        boolean result = PATTERN_CNTRL.matcher(text).find();
+        LOGGER.debug("{}:{}", result, text);
+        return result;
     }
 
     public boolean findXdigit(String text) {
-        LOGGER.debug("text:{}", text);
-        return PATTERN_XDIGIT.matcher(text).find();
+        boolean result = PATTERN_XDIGIT.matcher(text).find();
+        LOGGER.debug("{}:{}", result, text);
+        return result;
     }
 
     public boolean findSpace(String text) {
-        LOGGER.debug("text:{}", text);
-        return PATTERN_SPACE.matcher(text).find();
+        boolean result = PATTERN_SPACE.matcher(text).find();
+        LOGGER.debug("{}:{}", result, text);
+        return result;
     }
 }

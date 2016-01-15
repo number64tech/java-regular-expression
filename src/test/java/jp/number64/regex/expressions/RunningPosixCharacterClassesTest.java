@@ -52,13 +52,14 @@ public class RunningPosixCharacterClassesTest {
         }
         @Test
         public void caseTrue() {
-            assertTrue(target.findLowerAplha(""));
-            fail();
+            assertTrue(target.findLowerAplha("a"));
+            assertTrue(target.findLowerAplha("z"));
         }
         @Test
         public void caseFalse() {
-            assertFalse(target.findLowerAplha(""));
-            fail();
+            assertFalse(target.findLowerAplha("A"));
+            assertFalse(target.findLowerAplha("Z"));
+            assertFalse(target.findLowerAplha("\uff41"));  // doublebyte 'a', If JavaCharacterClass, this char matches.
         }
     }
 
@@ -70,13 +71,14 @@ public class RunningPosixCharacterClassesTest {
         }
         @Test
         public void caseTrue() {
-            assertTrue(target.findUpperAlpha(""));
-            fail();
+            assertTrue(target.findUpperAlpha("A"));
+            assertTrue(target.findUpperAlpha("Z"));
         }
         @Test
         public void caseFalse() {
-            assertFalse(target.findUpperAlpha(""));
-            fail();
+            assertFalse(target.findUpperAlpha("a"));
+            assertFalse(target.findUpperAlpha("z"));
+            assertFalse(target.findUpperAlpha("\uff21"));  // doublebyte 'A', If JavaCharacterClass, this char matches.
         }
     }
 
@@ -88,13 +90,13 @@ public class RunningPosixCharacterClassesTest {
         }
         @Test
         public void caseTrue() {
-            assertTrue(target.findAscii(""));
-            fail();
+            assertTrue(target.findAscii(" "));
+            assertTrue(target.findAscii("a"));
+            assertTrue(target.findAscii("!"));
         }
         @Test
         public void caseFalse() {
-            assertFalse(target.findAscii(""));
-            fail();
+            assertFalse(target.findAscii("\uff41"));
         }
     }
 
@@ -106,13 +108,17 @@ public class RunningPosixCharacterClassesTest {
         }
         @Test
         public void caseTrue() {
-            assertTrue(target.findAlpha(""));
-            fail();
+            assertTrue(target.findAlpha("a"));
+            assertTrue(target.findAlpha("z"));
+            assertTrue(target.findAlpha("A"));
+            assertTrue(target.findAlpha("Z"));
         }
         @Test
         public void caseFalse() {
-            assertFalse(target.findAlpha(""));
-            fail();
+            assertFalse(target.findAlpha("0"));
+            assertFalse(target.findAlpha("_"));
+            assertFalse(target.findAlpha("\uff41"));
+            assertFalse(target.findAlpha("\uff21"));
         }
     }
 
@@ -124,13 +130,13 @@ public class RunningPosixCharacterClassesTest {
         }
         @Test
         public void caseTrue() {
-            assertTrue(target.findDigit(""));
-            fail();
+            assertTrue(target.findDigit("0"));
+            assertTrue(target.findDigit("9"));
         }
         @Test
         public void caseFalse() {
-            assertFalse(target.findDigit(""));
-            fail();
+            assertFalse(target.findDigit("a"));
+            assertFalse(target.findDigit("\uff19"));
         }
     }
 
@@ -142,13 +148,14 @@ public class RunningPosixCharacterClassesTest {
         }
         @Test
         public void caseTrue() {
-            assertTrue(target.findAlnum(""));
-            fail();
+            assertTrue(target.findAlnum("a"));
+            assertTrue(target.findAlnum("Z"));
+            assertTrue(target.findAlnum("9"));
         }
         @Test
         public void caseFalse() {
-            assertFalse(target.findAlnum(""));
-            fail();
+            assertFalse(target.findAlnum("_"));
+            assertFalse(target.findAlpha("\uff41"));
         }
     }
 
@@ -160,13 +167,20 @@ public class RunningPosixCharacterClassesTest {
         }
         @Test
         public void caseTrue() {
-            assertTrue(target.findPuncation(""));
-            fail();
+            assertTrue(target.findPuncation("!"));
+            assertTrue(target.findPuncation("\""));
+            assertTrue(target.findPuncation("("));
+            assertTrue(target.findPuncation("<"));
+            assertTrue(target.findPuncation("|"));
+            assertTrue(target.findPuncation("{"));
+            assertTrue(target.findPuncation("\\"));
         }
         @Test
         public void caseFalse() {
-            assertFalse(target.findPuncation(""));
-            fail();
+            assertFalse(target.findPuncation(" "));
+            assertFalse(target.findPuncation("a"));
+            assertFalse(target.findPuncation("\t"));
+            assertFalse(target.findPuncation("\uff01"));
         }
     }
 
@@ -178,13 +192,17 @@ public class RunningPosixCharacterClassesTest {
         }
         @Test
         public void caseTrue() {
-            assertTrue(target.findGraph(""));
-            fail();
+            assertTrue(target.findGraph("!"));
+            assertTrue(target.findGraph("("));
+            assertTrue(target.findGraph("<"));
+            assertTrue(target.findGraph("{"));
+            assertTrue(target.findGraph("a"));
         }
         @Test
         public void caseFalse() {
-            assertFalse(target.findGraph(""));
-            fail();
+            assertFalse(target.findGraph(" "));
+            assertFalse(target.findGraph("\t"));
+            assertFalse(target.findGraph("\uff01"));
         }
     }
 
@@ -196,13 +214,16 @@ public class RunningPosixCharacterClassesTest {
         }
         @Test
         public void caseTrue() {
-            assertTrue(target.findPrint(""));
-            fail();
+            assertTrue(target.findPrint("!"));
+            assertTrue(target.findPrint("("));
+            assertTrue(target.findPrint("<"));
+            assertTrue(target.findPrint("{"));
+            assertTrue(target.findPrint("a"));
+            assertTrue(target.findPrint(" "));
         }
         @Test
         public void caseFalse() {
-            assertFalse(target.findPrint(""));
-            fail();
+            assertFalse(target.findPrint("\t"));
         }
     }
 
@@ -214,13 +235,13 @@ public class RunningPosixCharacterClassesTest {
         }
         @Test
         public void caseTrue() {
-            assertTrue(target.findBlank(""));
-            fail();
+            assertTrue(target.findBlank(" "));
+            assertTrue(target.findBlank("\t"));
         }
         @Test
         public void caseFalse() {
-            assertFalse(target.findBlank(""));
-            fail();
+            assertFalse(target.findBlank("\n"));
+            assertFalse(target.findBlank("\f"));
         }
     }
 
@@ -232,13 +253,16 @@ public class RunningPosixCharacterClassesTest {
         }
         @Test
         public void caseTrue() {
-            assertTrue(target.findCntrl(""));
-            fail();
+            assertTrue(target.findCntrl("\t"));
+            assertTrue(target.findCntrl("\r"));
+            assertTrue(target.findCntrl("\n"));
+            assertTrue(target.findCntrl("\f"));
+            assertTrue(target.findCntrl("\u007F"));
         }
         @Test
         public void caseFalse() {
-            assertFalse(target.findCntrl(""));
-            fail();
+            assertFalse(target.findCntrl(" "));
+            assertFalse(target.findCntrl("\\"));
         }
     }
 
@@ -250,13 +274,15 @@ public class RunningPosixCharacterClassesTest {
         }
         @Test
         public void caseTrue() {
-            assertTrue(target.findXdigit(""));
-            fail();
+            assertTrue(target.findXdigit("0"));
+            assertTrue(target.findXdigit("a"));
+            assertTrue(target.findXdigit("F"));
         }
         @Test
         public void caseFalse() {
-            assertFalse(target.findXdigit(""));
-            fail();
+            assertFalse(target.findXdigit("g"));
+            assertFalse(target.findXdigit("x"));
+            assertFalse(target.findXdigit("X"));
         }
     }
 
@@ -268,13 +294,16 @@ public class RunningPosixCharacterClassesTest {
         }
         @Test
         public void caseTrue() {
-            assertTrue(target.findSpace(""));
-            fail();
+            assertTrue(target.findSpace(" "));
+            assertTrue(target.findSpace("\t"));
+            assertTrue(target.findSpace("\n"));
+            assertTrue(target.findSpace("\f"));
+            assertTrue(target.findSpace("\r"));
+            assertTrue(target.findSpace("\u000B"));
         }
         @Test
         public void caseFalse() {
-            assertFalse(target.findSpace(""));
-            fail();
+            assertFalse(target.findSpace("\u3000"));
         }
     }
 
