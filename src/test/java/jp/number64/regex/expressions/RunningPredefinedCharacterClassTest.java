@@ -48,9 +48,14 @@ public class RunningPredefinedCharacterClassTest {
         }
         @Test
         public void caseTrue() {
-            assertTrue(target.findAnyCharacter("0"));
-            assertTrue(target.findAnyCharacter("a"));
-            assertTrue(target.findAnyCharacter("\u8f5f"));
+            assertTrue(target.findAnyCharacter("0UMBER64"));
+            assertTrue(target.findAnyCharacter("aUMBER64"));
+            assertTrue(target.findAnyCharacter("\u8f5fUMBER64"));
+        }
+        @Test
+        public void caseFalse() {
+            assertFalse(target.findAnyCharacter("NNUMBER64"));
+            assertFalse(target.findAnyCharacter("UMBER64"));
         }
     }
 

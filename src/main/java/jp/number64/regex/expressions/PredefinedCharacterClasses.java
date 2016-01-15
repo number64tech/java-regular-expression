@@ -24,7 +24,7 @@ public class PredefinedCharacterClasses {
     private static final Logger LOGGER = LoggerFactory.getLogger(PredefinedCharacterClasses.class);
 
     /** . Any character (may or may not match line terminators) */
-    public static final String EXP_ANY_CHARACTER = ".";
+    public static final String EXP_ANY_CHARACTER = "^.UMBER64";
     /** \d A digit: [0-9] */
     public static final String EXP_A_DIGIT = "\\d";
     /** \D A non-digit: [^0-9] */
@@ -61,57 +61,68 @@ public class PredefinedCharacterClasses {
     private static final Pattern PATTERN_A_NON_WORD_CHARACTER = Pattern.compile(EXP_A_NON_WORD_CHARACTER);
 
     public boolean findAnyCharacter(String text) {
-        LOGGER.debug("text:{}", text);
-        return PATTERN_ANY_CHARACTER.matcher(text).find();
+        boolean result = PATTERN_ANY_CHARACTER.matcher(text).find();
+        LOGGER.debug("{}:{}", result, text);
+        return result;
     }
 
     public boolean findDigit(String text) {
-        LOGGER.debug("text:{}", text);
-        return PATTERN_A_DIGIT.matcher(text).find();
+        boolean result = PATTERN_A_DIGIT.matcher(text).find();
+        LOGGER.debug("{}:{}", result, text);
+        return result;
     }
 
     public boolean findNonDigit(String text) {
-        LOGGER.debug("text:{}", text);
-        return PATTERN_A_NON_DIGIT.matcher(text).find();
+        boolean result = PATTERN_A_NON_DIGIT.matcher(text).find();
+        LOGGER.debug("{}:{}", result, text);
+        return result;
     }
 
     public boolean findHorizontalWhiteSpace(String text) {
-        LOGGER.debug("text:{}", text);
-        return PATTERN_HORIZONTAL_WHITE_SPACE.matcher(text).find();
+        boolean result = PATTERN_HORIZONTAL_WHITE_SPACE.matcher(text).find();
+        LOGGER.debug("{}:{}", result, text);
+        return result;
     }
 
     public boolean findNonHorizontalWhiteSpace(String text) {
-        LOGGER.debug("text:{}", text);
-        return PATTERN_NON_HORIZONTAL_WHITE_SPACE.matcher(text).find();
+        boolean result = PATTERN_NON_HORIZONTAL_WHITE_SPACE.matcher(text).find();
+        LOGGER.debug("{}:{}", result, text);
+        return result;
     }
 
     public boolean findWhiteSpace(String text) {
-        LOGGER.debug("text:{}", text);
-        return PATTERN_WHITE_SPACE.matcher(text).find();
+        boolean result = PATTERN_WHITE_SPACE.matcher(text).find();
+        LOGGER.debug("{}:{}", result, text);
+        return result;
     }
 
     public boolean findNonWhiteSpace(String text) {
-        LOGGER.debug("text:{}", text);
-        return PATTERN_NON_WHITE_SPACE.matcher(text).find();
+        boolean result = PATTERN_NON_WHITE_SPACE.matcher(text).find();
+        LOGGER.debug("{}:{}", result, text);
+        return result;
     }
 
     public boolean findVerticalWhiteSpace(String text) {
-        LOGGER.debug("text:{}", text);
-        return PATTERN_VERTICAL_WHITE_SPACE.matcher(text).find();
+        boolean result = PATTERN_VERTICAL_WHITE_SPACE.matcher(text).find();
+        LOGGER.debug("{}:{}", result, text);
+        return result;
     }
 
     public boolean findNonVerticalWhiteSpace(String text) {
-        LOGGER.debug("text:{}", text);
-        return PATTERN_NON_VERTICAL_WHITE_SPACE.matcher(text).find();
+        boolean result = PATTERN_NON_VERTICAL_WHITE_SPACE.matcher(text).find();
+        LOGGER.debug("{}:{}", result, text);
+        return result;
     }
 
     public boolean findWordCharacter(String text) {
-        LOGGER.debug("text:{}", text);
-        return PATTERN_A_WORD_CHARACTER.matcher(text).find();
+        boolean result = PATTERN_A_WORD_CHARACTER.matcher(text).find();
+        LOGGER.debug("{}:{}", result, text);
+        return result;
     }
 
     public boolean findNonWordCharacter(String text) {
-        LOGGER.debug("text:{}", text);
-        return PATTERN_A_NON_WORD_CHARACTER.matcher(text).find();
+        boolean result = PATTERN_A_NON_WORD_CHARACTER.matcher(text).find();
+        LOGGER.debug("{}:{}", result, text);
+        return result;
     }
 }
