@@ -19,13 +19,13 @@ public class JavaCharacterClasses {
     private static final Logger LOGGER = LoggerFactory.getLogger(JavaCharacterClasses.class);
 
     /** \p{javaLowerCase} Equivalent to java.lang.Character.isLowerCase() */
-    public static final String EXP_JAVA_LOWER_CASE = "";
+    public static final String EXP_JAVA_LOWER_CASE = "\\p{javaLowerCase}";
     /** \p{javaUpperCase} Equivalent to java.lang.Character.isUpperCase() */
-    public static final String EXP_JAVA_UPPER_CASE = "";
+    public static final String EXP_JAVA_UPPER_CASE = "\\p{javaUpperCase}";
     /** \p{javaWhitespace} Equivalent to java.lang.Character.isWhitespace() */
-    public static final String EXP_JAVA_WHITE_SPACE = "";
+    public static final String EXP_JAVA_WHITE_SPACE = "\\p{javaWhitespace}";
     /** \p{javaMirrored} Equivalent to java.lang.Character.isMirrored() */
-    public static final String EXP_JAVA_MIRRORED = "";
+    public static final String EXP_JAVA_MIRRORED = "\\p{javaMirrored}";
 
     // -----------------------------------------------------------------------------------------------
 
@@ -35,22 +35,26 @@ public class JavaCharacterClasses {
     private static final Pattern PATTERN_JAVA_MIRRORED = Pattern.compile(EXP_JAVA_MIRRORED);
 
     public boolean findJavaLowerCase(String text) {
-        LOGGER.debug("text:{}", text);
-        return PATTERN_JAVA_LOWER_CASE.matcher(text).find();
+        boolean result = PATTERN_JAVA_LOWER_CASE.matcher(text).find();
+        LOGGER.debug("{}:{}", result, text);
+        return result;
     }
 
     public boolean findJavaUpperCase(String text) {
-        LOGGER.debug("text:{}", text);
-        return PATTERN_JAVA_UPPER_CASE.matcher(text).find();
+        boolean result = PATTERN_JAVA_UPPER_CASE.matcher(text).find();
+        LOGGER.debug("{}:{}", result, text);
+        return result;
     }
 
     public boolean findJavaWhiteSpace(String text) {
-        LOGGER.debug("text:{}", text);
-        return PATTERN_JAVA_WHITE_SPACE.matcher(text).find();
+        boolean result = PATTERN_JAVA_WHITE_SPACE.matcher(text).find();
+        LOGGER.debug("{}:{}", result, text);
+        return result;
     }
 
     public boolean findJavaMirrored(String text) {
-        LOGGER.debug("text:{}", text);
-        return PATTERN_JAVA_MIRRORED.matcher(text).find();
+        boolean result = PATTERN_JAVA_MIRRORED.matcher(text).find();
+        LOGGER.debug("{}:{}", result, text);
+        return result;
     }
 }
