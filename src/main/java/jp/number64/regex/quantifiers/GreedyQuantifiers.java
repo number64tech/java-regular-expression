@@ -9,12 +9,12 @@ import org.slf4j.LoggerFactory;
 /**
  * greedy quantifiers <br>
  * <br>
- * X? X, once or not at all
- * X* X, zero or more times
- * X+ X, one or more times
- * X{n} X, exactly n times
- * X{n,} X, at least n times
- * X{n,m} X, at least n but not more than m times
+ * X? X, once or not at all <br>
+ * X* X, zero or more times <br>
+ * X+ X, one or more times <br>
+ * X{n} X, exactly n times <br>
+ * X{n,} X, at least n times <br>
+ * X{n,m} X, at least n but not more than m times <br>
  * <br>
  */
 public class GreedyQuantifiers {
