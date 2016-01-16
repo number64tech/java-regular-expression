@@ -6,6 +6,7 @@ import jp.number64.regex.quantifiers.RunningGreedyQuantifiersTest.GreedyQtAtLeas
 import jp.number64.regex.quantifiers.RunningGreedyQuantifiersTest.GreedyQtExacNTimesTest;
 import jp.number64.regex.quantifiers.RunningGreedyQuantifiersTest.GreedyQtNtoMTimesTest;
 import jp.number64.regex.quantifiers.RunningGreedyQuantifiersTest.GreedyQtOnceOrNotAtAllTest;
+import jp.number64.regex.quantifiers.RunningGreedyQuantifiersTest.GreedyQtOneOrMoreMultiTest;
 import jp.number64.regex.quantifiers.RunningGreedyQuantifiersTest.GreedyQtOneOrMoreTest;
 import jp.number64.regex.quantifiers.RunningGreedyQuantifiersTest.GreedyQtZeroOrMoreTest;
 
@@ -26,6 +27,7 @@ import org.slf4j.LoggerFactory;
     GreedyQtOnceOrNotAtAllTest.class,
     GreedyQtZeroOrMoreTest.class,
     GreedyQtOneOrMoreTest.class,
+    GreedyQtOneOrMoreMultiTest.class,
     GreedyQtExacNTimesTest.class,
     GreedyQtAtLeastNTimesTest.class,
     GreedyQtNtoMTimesTest.class
@@ -41,12 +43,13 @@ public class RunningGreedyQuantifiersTest {
         }
         @Test
         public void caseTrue() {
+            assertTrue(target.findGreedyQtOnceOrNotAtAll("64"));
+            assertTrue(target.findGreedyQtOnceOrNotAtAll("ME64"));
             assertTrue(target.findGreedyQtOnceOrNotAtAll("NUMBER64"));
-            assertTrue(target.findGreedyQtOnceOrNotAtAll("NUMBER4"));
         }
         @Test
         public void caseFalse() {
-            assertFalse(target.findGreedyQtOnceOrNotAtAll("NUMBER664"));
+            assertFalse(target.findGreedyQtOnceOrNotAtAll("63"));
         }
     }
 
@@ -58,13 +61,13 @@ public class RunningGreedyQuantifiersTest {
         }
         @Test
         public void caseTrue() {
+            assertTrue(target.findGreedyQtZeroOrMore("NUMBER6"));
             assertTrue(target.findGreedyQtZeroOrMore("NUMBER64"));
-            assertTrue(target.findGreedyQtZeroOrMore("NUMBER4"));
-            assertTrue(target.findGreedyQtZeroOrMore("NUMBER6666666664"));
+            assertTrue(target.findGreedyQtZeroOrMore("NUMBER64444444444444"));
         }
         @Test
         public void caseFalse() {
-            assertFalse(target.findGreedyQtZeroOrMore("NUMBER54"));
+            assertFalse(target.findGreedyQtZeroOrMore("NUMBER"));
         }
     }
 
@@ -77,11 +80,25 @@ public class RunningGreedyQuantifiersTest {
         @Test
         public void caseTrue() {
             assertTrue(target.findGreedyQtOneOrMore("NUMBER64"));
-            assertTrue(target.findGreedyQtOneOrMore("NUMBER6666666664"));
+            assertTrue(target.findGreedyQtOneOrMore("NUMBER64444444444444"));
         }
         @Test
         public void caseFalse() {
-            assertFalse(target.findGreedyQtOneOrMore("NUMBER4"));
+            assertFalse(target.findGreedyQtOneOrMore("NUMBER"));
+            assertFalse(target.findGreedyQtOneOrMore("NUMBER6"));
+        }
+    }
+
+    /**  */
+    public static final class GreedyQtOneOrMoreMultiTest extends TestBase {
+        @BeforeClass
+        public static void doBeforeClass() {
+            LOGGER.debug("EXP_GQ_ONE_OR_MT_MULTI: pattern=\"{}\"", EXP_GQ_ONE_OR_MT_MULTI);
+        }
+        @Test
+        public void caseTrue() {
+            assertTrue(target.findGreedyQtOneOrMoreMulti("\u8f5f"));
+            assertTrue(target.findGreedyQtOneOrMoreMulti("\u8f5f\u8f5f\u8f5f\u8f5f"));
         }
     }
 
@@ -93,11 +110,13 @@ public class RunningGreedyQuantifiersTest {
         }
         @Test
         public void caseTrue() {
-            assertTrue(target.findGreedyQtExactlyN("NNUMBER64"));
+            assertTrue(target.findGreedyQtExactlyN("NUMBER644"));
         }
         @Test
         public void caseFalse() {
+            assertFalse(target.findGreedyQtExactlyN("NUMBER6"));
             assertFalse(target.findGreedyQtExactlyN("NUMBER64"));
+            assertFalse(target.findGreedyQtExactlyN("NUMBER642"));
         }
     }
 
@@ -109,12 +128,13 @@ public class RunningGreedyQuantifiersTest {
         }
         @Test
         public void caseTrue() {
-            assertTrue(target.findGreedyQtAtLeasetN("NNNUMBER64"));
-            assertTrue(target.findGreedyQtAtLeasetN("NNNNNNNNNNNNNNNNNNNNUMBER64"));
+            assertTrue(target.findGreedyQtAtLeasetN("NUMBER6444"));
+            assertTrue(target.findGreedyQtAtLeasetN("NUMBER644444444444"));
         }
         @Test
         public void caseFalse() {
-            assertFalse(target.findGreedyQtAtLeasetN("NNUMBER64"));
+            assertFalse(target.findGreedyQtAtLeasetN("NUMBER644"));
+            assertFalse(target.findGreedyQtAtLeasetN("NUMBER643"));
         }
     }
 
@@ -122,18 +142,35 @@ public class RunningGreedyQuantifiersTest {
     public static final class GreedyQtNtoMTimesTest extends TestBase {
         @BeforeClass
         public static void doBeforeClass() {
-            LOGGER.debug("EXP_GQ_N_TO_M_TIMES: pattern=\"{}\"", EXP_GQ_N_TO_M_TIMES);
+            LOGGER.debug("EXP_GQ_1_TO_3_TIMES: pattern=\"{}\"", EXP_GQ_1_TO_3_TIMES);
         }
         @Test
         public void caseTrue() {
-            assertTrue(target.findGreedyQtNtoM("NUMBER64"));
-            assertTrue(target.findGreedyQtNtoM("NUUMBER64"));
-            assertTrue(target.findGreedyQtNtoM("NMBER64"));
+            assertTrue(target.findGreedyQt1to3("NUMBER64"));
+            assertTrue(target.findGreedyQt1to3("NUMBER64444444444444"));
         }
         @Test
         public void caseFalse() {
-            assertFalse(target.findGreedyQtNtoM("NUUUMBER64"));
-            assertFalse(target.findGreedyQtNtoM("NOMBER64"));
+            assertFalse(target.findGreedyQt1to3("NUMBER6"));
+        }
+    }
+
+    /**  */
+    public static final class GreedyQt0to2TimesTest extends TestBase {
+        @BeforeClass
+        public static void doBeforeClass() {
+            LOGGER.debug("EXP_GQ_0_TO_2_TIMES: pattern=\"{}\"", EXP_GQ_0_TO_2_TIMES);
+        }
+        @Test
+        public void caseTrue() {
+            assertTrue(target.findGreedyQt0to2("NUMBER4"));
+            assertTrue(target.findGreedyQt0to2("NUMBER64"));
+            assertTrue(target.findGreedyQt0to2("NUMBER664"));
+        }
+        @Test
+        public void caseFalse() {
+            assertFalse(target.findGreedyQt0to2("NUMBER6664"));
+            assertFalse(target.findGreedyQt0to2("NUMBER6"));
         }
     }
 
