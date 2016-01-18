@@ -31,6 +31,7 @@ import org.slf4j.LoggerFactory;
     MatchFlagSTest.class,
     MatchFlagUTest.class,
     MatchFlagXTest.class,
+    //MatchFlagUpperUTest.class,
     NonCapturingMatchFlagsTest.class
 })
 public class RunningInlineSwitchTest {
@@ -44,11 +45,11 @@ public class RunningInlineSwitchTest {
         }
         @Test
         public void caseTrue() {
-            assertTrue(target.findRangeQuote(""));
+            assertTrue(target.findRangeQuote("NUM*(BER)=6*4"));
         }
         @Test
         public void caseFalse() {
-            assertFalse(target.findRangeQuote(""));
+            assertFalse(target.findRangeQuote("NUMMMBER=66664"));
         }
     }
 
@@ -60,11 +61,11 @@ public class RunningInlineSwitchTest {
         }
         @Test
         public void caseTrue() {
-            assertTrue(target.findNonRangeQuote(""));
+            assertTrue(target.findNonRangeQuote("NUMMMBER=66664"));
         }
         @Test
         public void caseFalse() {
-            assertFalse(target.findNonRangeQuote(""));
+            assertFalse(target.findNonRangeQuote("NUM*(BER)=6*4"));
         }
     }
 
@@ -76,11 +77,12 @@ public class RunningInlineSwitchTest {
         }
         @Test
         public void caseTrue() {
-            assertTrue(target.findMatchFlagI(""));
+            assertTrue(target.findMatchFlagI("NUMBER64"));
+            assertTrue(target.findMatchFlagI("NUmbeR64"));
         }
         @Test
         public void caseFalse() {
-            assertFalse(target.findMatchFlagI(""));
+            assertFalse(target.findMatchFlagI("NUmBEr64"));
         }
     }
 
@@ -92,11 +94,17 @@ public class RunningInlineSwitchTest {
         }
         @Test
         public void caseTrue() {
-            assertTrue(target.findMatchFlagD(""));
+            assertTrue(target.findMatchFlagD("NUM\n"));
+            assertTrue(target.findMatchFlagD("numm"));
+            assertTrue(target.findMatchFlagD("num\r")); // In (?d) block, \r is NOT line-terminator.
+            assertTrue(target.findMatchFlagD("ber\r"));
+            assertTrue(target.findMatchFlagD("ber\n"));
         }
         @Test
         public void caseFalse() {
-            assertFalse(target.findMatchFlagD(""));
+            assertFalse(target.findMatchFlagD("NUMM"));
+            assertFalse(target.findMatchFlagD("num\n")); // In (?d) block, \n is line-terminator.
+            assertFalse(target.findMatchFlagD("NUM\r"));
         }
     }
 
@@ -108,11 +116,15 @@ public class RunningInlineSwitchTest {
         }
         @Test
         public void caseTrue() {
-            assertTrue(target.findMatchFlagM(""));
+            assertTrue(target.findMatchFlagM("NUMBER\n64"));
+            assertTrue(target.findMatchFlagM("NUMBER\n"));
+            assertTrue(target.findMatchFlagM("NUMBER"));
+            assertTrue(target.findMatchFlagM("NUMber\n"));  // caution: by defaut, ending \n matchs "$"
+            assertTrue(target.findMatchFlagM("NUMber"));
         }
         @Test
         public void caseFalse() {
-            assertFalse(target.findMatchFlagM(""));
+            assertFalse(target.findMatchFlagM("NUMber\n64")); // this text is NOT ending \n, so "ber$" doesn't match.
         }
     }
 
@@ -124,11 +136,15 @@ public class RunningInlineSwitchTest {
         }
         @Test
         public void caseTrue() {
-            assertTrue(target.findMatchFlagS(""));
+            assertTrue(target.findMatchFlagS("NUMM"));
+            assertTrue(target.findMatchFlagS("NUM\r"));
+            assertTrue(target.findMatchFlagS("NUM\n"));
+            assertTrue(target.findMatchFlagS("numm"));
         }
         @Test
         public void caseFalse() {
-            assertFalse(target.findMatchFlagS(""));
+            assertFalse(target.findMatchFlagS("num\r"));
+            assertFalse(target.findMatchFlagS("num\n"));
         }
     }
 
@@ -140,11 +156,15 @@ public class RunningInlineSwitchTest {
         }
         @Test
         public void caseTrue() {
-            assertTrue(target.findMatchFlagU(""));
+            assertTrue(target.findMatchFlagU("num"));
+            assertTrue(target.findMatchFlagU("NUM"));
+            assertTrue(target.findMatchFlagU("\u03a3")); // SIGMA-U
+            assertTrue(target.findMatchFlagU("\u03c3")); // SIGMA-L
+            assertTrue(target.findMatchFlagU("\u0393")); // GAMMA-U
         }
         @Test
         public void caseFalse() {
-            assertFalse(target.findMatchFlagU(""));
+            assertFalse(target.findMatchFlagU("\u03b3")); // GAMMA-L
         }
     }
 
@@ -156,12 +176,23 @@ public class RunningInlineSwitchTest {
         }
         @Test
         public void caseTrue() {
-            assertTrue(target.findMatchFlagX(""));
+            assertTrue(target.findMatchFlagX("NUMBER64"));
         }
         @Test
         public void caseFalse() {
-            assertFalse(target.findMatchFlagX(""));
+            assertFalse(target.findMatchFlagX("NUMBER 64 "));
+            assertFalse(target.findMatchFlagX("NUM"));
+            assertFalse(target.findMatchFlagX("num"));
         }
+    }
+
+    /**  */
+    public static final class MatchFlagUpperUTest extends TestBase {
+        @BeforeClass
+        public static void doBeforeClass() {
+            LOGGER.debug("EXP_MATCH_FLAG_UPPER_U: pattern=\"{}\"", EXP_MATCH_FLAG_UPPER_U);
+        }
+        // ?
     }
 
     /**  */
