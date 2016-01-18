@@ -203,11 +203,11 @@ public class RunningInlineSwitchTest {
         }
         @Test
         public void case01() {
-            assertEquals("", target.findNonCapturingMatchFlags("", 1));
+            assertEquals("ber", target.findNonCapturingMatchFlags("NUMber64", 1));
         }
         @Test
         public void case02() {
-            assertEquals("", target.findNonCapturingMatchFlags("", 1));
+            assertEquals("64", target.findNonCapturingMatchFlags("numBER64", 2));
         }
     }
 

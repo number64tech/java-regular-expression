@@ -68,7 +68,7 @@ public class InlineSwitch {
     public static final String EXP_MATCH_FLAG_UPPER_U = "(?U)";
 
     /** (?idmsux-idmsux:X) X, as a non-capturing group with the given flags i d m s u x on - off */
-    public static final String EXP_NON_CAPTURING_MATCH_FLAGS = "";
+    public static final String EXP_NON_CAPTURING_MATCH_FLAGS = "(?i:num)(?i)(ber)(?-i)(64)";
 
     // -----------------------------------------------------------------------------------------------
 
