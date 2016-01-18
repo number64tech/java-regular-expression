@@ -1,6 +1,5 @@
 package jp.number64.regex.specialconstruct;
 
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.slf4j.Logger;
@@ -34,34 +33,47 @@ public class LookAround {
 
     // -----------------------------------------------------------------------------------------------
 
-    private static final Pattern PATTERN_CAPTURING_NAMED = Pattern.compile(EXP_CAPTURING_NAMED);
+    private static final Pattern PATTERN_POSITIVE_LOOKAHEAD = Pattern.compile(EXP_POSITIVE_LOOKAHEAD);
+    private static final Pattern PATTERN_NEGATIVE_LOOKAHEAD = Pattern.compile(EXP_NEGATIVE_LOOKAHEAD);
+    private static final Pattern PATTERN_POSITIVE_LOOKBEHIND = Pattern.compile(EXP_POSITIVE_LOOKBEHIND);
+    private static final Pattern PATTERN_NEGATIVE_LOOKBEHIND = Pattern.compile(EXP_NEGATIVE_LOOKBEHIND);
+    private static final Pattern PATTERN_LOOKAROUND_A = Pattern.compile(EXP_LOOKAROUND_A);
+    private static final Pattern PATTERN_LOOKAROUND_B = Pattern.compile(EXP_LOOKAROUND_B);
 
 
-    public String findCapturingNamed(String text, String groupName) {
-        Matcher match = PATTERN_CAPTURING_NAMED.matcher(text);
-        match.find();
-        LOGGER.debug("result:{} group:{} text:{}", match.group(groupName), groupName, text);
-        return match.group(groupName);
+    public boolean findPositiveLookAhead(String text) {
+        boolean result = PATTERN_POSITIVE_LOOKAHEAD.matcher(text).find();
+        LOGGER.debug("{}:{}", result, text);
+        return result;
     }
 
-    public String findCapturingNotCapture(String text, int groupNumber) {
-        Matcher match = PATTERN_CAPTURING_NOT_CAPTURE.matcher(text);
-        match.find();
-        LOGGER.debug("result:{} group:{} text:{}", match.group(groupNumber), groupNumber, text);
-        return match.group(groupNumber);
+    public boolean findNegativeLookAhead(String text) {
+        boolean result = PATTERN_NEGATIVE_LOOKAHEAD.matcher(text).find();
+        LOGGER.debug("{}:{}", result, text);
+        return result;
     }
 
-    public String findCapturingIdpNotCapture(String text, int groupNumber) {
-        Matcher match = PATTERN_CAPTURING_IDP_NOT_CAPTURE.matcher(text);
-        match.find();
-        LOGGER.debug("result:{} group:{} text:{}", match.group(groupNumber), groupNumber, text);
-        return match.group(groupNumber);
+    public boolean findPositiveLookBehind(String text) {
+        boolean result = PATTERN_POSITIVE_LOOKBEHIND.matcher(text).find();
+        LOGGER.debug("{}:{}", result, text);
+        return result;
     }
 
-    public String findBackRefByNumber(String text, int groupNumber) {
-        Matcher match = PATTERN_BACK_REF_BY_NUMBER.matcher(text);
-        match.find();
-        LOGGER.debug("result:{} group:{} text:{}", match.group(groupNumber), groupNumber, text);
-        return match.group(groupNumber);
+    public boolean findNegativeLookBehind(String text) {
+        boolean result = PATTERN_NEGATIVE_LOOKBEHIND.matcher(text).find();
+        LOGGER.debug("{}:{}", result, text);
+        return result;
+    }
+
+    public boolean findLookAroundA(String text) {
+        boolean result = PATTERN_LOOKAROUND_A.matcher(text).find();
+        LOGGER.debug("{}:{}", result, text);
+        return result;
+    }
+
+    public boolean findLookAroundB(String text) {
+        boolean result = PATTERN_LOOKAROUND_B.matcher(text).find();
+        LOGGER.debug("{}:{}", result, text);
+        return result;
     }
 }
