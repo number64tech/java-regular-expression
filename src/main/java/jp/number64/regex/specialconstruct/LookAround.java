@@ -18,13 +18,13 @@ public class LookAround {
     private static final Logger LOGGER = LoggerFactory.getLogger(LookAround.class);
 
     /** (?=X) X, via zero-width positive lookahead */
-    public static final String EXP_POSITIVE_LOOKAHEAD = "";
+    public static final String EXP_POSITIVE_LOOKAHEAD = "(?=)";
     /** (?!X) X, via zero-width negative lookahead */
-    public static final String EXP_NEGATIVE_LOOKAHEAD = "";
+    public static final String EXP_NEGATIVE_LOOKAHEAD = "(?!)";
     /** (?<=X) X, via zero-width positive lookbehind */
-    public static final String EXP_POSITIVE_LOOKBEHIND = "";
+    public static final String EXP_POSITIVE_LOOKBEHIND = "(?<=)";
     /** (?<!X) X, via zero-width negative lookbehind */
-    public static final String EXP_NEGATIVE_LOOKBEHIND = "";
+    public static final String EXP_NEGATIVE_LOOKBEHIND = "(?<!)";
     /** combination-A */
     public static final String EXP_LOOKAROUND_A = "";
     /** combination-B */
