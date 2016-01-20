@@ -31,6 +31,8 @@ public class LookAround {
     public static final String EXP_LOOKAROUND_A = "(?<=NUM)(?=BER)";
     /** combination-B */
     public static final String EXP_LOOKAROUND_B = "(?<!NUM)-(?!BER)";
+    /** find with excluding-condition */
+    public static final String EXP_EXCLUDING_CONDITION = "^(?!.*64)(?=.*NUM)";
 
     // -----------------------------------------------------------------------------------------------
 
@@ -40,6 +42,7 @@ public class LookAround {
     private static final Pattern PATTERN_NEGATIVE_LOOKBEHIND = Pattern.compile(EXP_NEGATIVE_LOOKBEHIND);
     private static final Pattern PATTERN_LOOKAROUND_A = Pattern.compile(EXP_LOOKAROUND_A);
     private static final Pattern PATTERN_LOOKAROUND_B = Pattern.compile(EXP_LOOKAROUND_B);
+    private static final Pattern PATTERN_EXCLUDING_CONDITION = Pattern.compile(EXP_EXCLUDING_CONDITION);
 
     public boolean find(Matcher match, String text) {
         boolean result = match.find();
@@ -73,5 +76,11 @@ public class LookAround {
 
     public boolean findLookAroundB(String text) {
         return find(PATTERN_LOOKAROUND_B.matcher(text), text);
+    }
+
+    public boolean findWithExcludingCondition(String text) {
+        boolean result = PATTERN_EXCLUDING_CONDITION.matcher(text).find();
+        LOGGER.debug("{}:{}", result, text);
+        return result;
     }
 }

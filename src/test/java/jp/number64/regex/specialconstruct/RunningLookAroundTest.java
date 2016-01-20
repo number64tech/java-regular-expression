@@ -2,6 +2,7 @@ package jp.number64.regex.specialconstruct;
 
 import static jp.number64.regex.specialconstruct.LookAround.*;
 import static org.junit.Assert.*;
+import jp.number64.regex.specialconstruct.RunningLookAroundTest.FindWithExcludingConditionTest;
 import jp.number64.regex.specialconstruct.RunningLookAroundTest.LookAroundATest;
 import jp.number64.regex.specialconstruct.RunningLookAroundTest.LookAroundBTest;
 import jp.number64.regex.specialconstruct.RunningLookAroundTest.NegativeLookAheadTest;
@@ -25,7 +26,8 @@ import org.slf4j.LoggerFactory;
     PositiveLookBehindTest.class,
     NegativeLookBehindTest.class,
     LookAroundATest.class,
-    LookAroundBTest.class
+    LookAroundBTest.class,
+    FindWithExcludingConditionTest.class
 })
 public class RunningLookAroundTest {
     private static final Logger LOGGER = LoggerFactory.getLogger(RunningLookAroundTest.class);
@@ -115,6 +117,32 @@ public class RunningLookAroundTest {
         @Test
         public void case01() {
             assertTrue(target.findLookAroundB("NUM-NUM num-BER NUM-BER num-ber"));
+        }
+    }
+
+    /**  */
+    public static final class FindWithExcludingConditionTest extends TestBase {
+        @BeforeClass
+        public static void doBeforeClass() {
+            LOGGER.debug("EXP_EXCLUDING_CONDITION: pattern=\"{}\"", EXP_EXCLUDING_CONDITION);
+        }
+        @Test
+        public void caseTrue() {
+            assertTrue(target.findWithExcludingCondition("NUM"));
+            assertTrue(target.findWithExcludingCondition("numNUMberBER"));
+            assertTrue(target.findWithExcludingCondition("numNUM"));
+        }
+        @Test
+        public void caseFalse() {
+            assertFalse(target.findWithExcludingCondition("num"));
+            assertFalse(target.findWithExcludingCondition("NUM64"));
+            assertFalse(target.findWithExcludingCondition("NUMber64ber"));
+            assertFalse(target.findWithExcludingCondition("64numNUMberBER"));
+            assertFalse(target.findWithExcludingCondition("num64NUMberBER"));
+            assertFalse(target.findWithExcludingCondition("numNUM64berBER"));
+            assertFalse(target.findWithExcludingCondition("numNUMberBER64"));
+            assertFalse(target.findWithExcludingCondition("64NUM"));
+            assertFalse(target.findWithExcludingCondition("num64numNUM"));
         }
     }
 
